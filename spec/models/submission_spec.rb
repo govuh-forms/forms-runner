@@ -162,6 +162,37 @@ RSpec.describe Submission, type: :model do
     end
   end
 
+  describe "#form" do
+    context "when the submission has a form version" do
+      let(:submission) { create(:submission, form_version: 1111, form_document: build(:form_document, name: "form on submission")) }
+      let(:form_with_version) { Api::V3::FormDocumentResource.new(name: "form with a version") }
+
+      before do
+        allow(Api::V3::FormDocumentRepository).to receive(:find_by_version).and_return(form_with_version)
+      end
+
+      it "gets the form document from the v3 API" do
+        expect(submission.form.name).to eq("form with a version")
+        expect(Api::V3::FormDocumentRepository).to have_received(:find_by_version).with(form_id: submission.form_id, version: 1111)
+      end
+
+      it "raises an error when the form version cannot be found" do
+        allow(Api::V3::FormDocumentRepository).to receive(:find_by_version).and_return(nil)
+
+        expect { submission.form }.to raise_error(ActiveRecord::RecordNotFound, /Form version 1111/)
+      end
+    end
+
+    context "when the submission has no form version" do
+      let(:submission) { create(:submission, form_document: build(:form_document, name: "form without version")) }
+
+      it "gets the form document stored on the submission" do
+        expect(Api::V3::FormDocumentRepository).not_to receive(:find_by_version)
+        expect(submission.form.name).to eq("form without version")
+      end
+    end
+  end
+
   describe "answer content methods" do
     subject(:submission) { create(:submission, form_document:, welsh_form_document:, answers:) }
 

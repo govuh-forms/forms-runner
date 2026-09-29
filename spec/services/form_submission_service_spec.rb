@@ -209,6 +209,10 @@ RSpec.describe FormSubmissionService, :capture_logging do
         end
 
         it "enqueues a job to send the submission" do
+          allow(Api::V3::FormDocumentRepository).to receive(:find_by_version)
+            .with(form_id: form.id, version: form_version)
+            .and_return(Api::V3::FormDocumentResource.new(document_json))
+
           assert_enqueued_with(job: SendSubmissionJob) do
             service.submit
           end

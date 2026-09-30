@@ -52,7 +52,7 @@ module Store
   private
 
     def expired?
-      authenticated_at.blank? || Time.current.to_i - authenticated_at >= 1.hour
+      authenticated_at.blank? || Time.current.to_i - authenticated_at >= Settings.govuk_one_login.session_timeout_length
     end
   end
 end

@@ -10,12 +10,6 @@ module Store
       @store = store
     end
 
-    def store_token(token)
-      @store[AUTH_KEY] = {
-        TOKEN_KEY => token,
-      }
-    end
-
     def store_session(sub:, email:, token:, authenticated_at:)
       @store[AUTH_KEY] = {
         SUB_KEY => sub,
@@ -34,11 +28,11 @@ module Store
     end
 
     def sub
-      @store.dig(AUTH_KEY, SUB_KEY)
+      @store.dig(AUTH_KEY, SUB_KEY) unless expired?
     end
 
     def email
-      @store.dig(AUTH_KEY, EMAIL_KEY)
+      @store.dig(AUTH_KEY, EMAIL_KEY) unless expired?
     end
 
     def authenticated_at

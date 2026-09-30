@@ -30,6 +30,46 @@ RSpec.describe Store::AuthStore do
     end
   end
 
+  describe "#get_token" do
+    it "returns the token" do
+      auth_store.store_session(sub:, email:, token:, authenticated_at:)
+
+      expect(auth_store.get_token).to eq(token)
+    end
+  end
+
+  describe "#sub" do
+    it "returns the sub when the session has not expired" do
+      auth_store.store_session(sub:, email:, token:, authenticated_at:)
+
+      expect(auth_store.sub).to eq(sub)
+    end
+
+    it "returns nil when the session has expired" do
+      auth_store.store_session(sub:, email:, token:, authenticated_at:)
+
+      travel 1.hour + 1.second
+
+      expect(auth_store.sub).to be_nil
+    end
+  end
+
+  describe "#email" do
+    it "returns the email when the session has not expired" do
+      auth_store.store_session(sub:, email:, token:, authenticated_at:)
+
+      expect(auth_store.email).to eq(email)
+    end
+
+    it "returns nil when the session has expired" do
+      auth_store.store_session(sub:, email:, token:, authenticated_at:)
+
+      travel 1.hour + 1.second
+
+      expect(auth_store.email).to be_nil
+    end
+  end
+
   describe "#logged_in?" do
     it "returns true when the token is present and authenticated_at is within the last hour" do
       auth_store.store_session(sub:, email:, token:, authenticated_at:)

@@ -23,7 +23,7 @@ govuk_one_login:
   client_id: changeme
   base_url: https://oidc.integration.account.gov.uk/
   # 1 hour in seconds
-  session_timeout_length: 3600
+  session_timeout_seconds: 3600
 
 # Settings for GOV.UK Notify api & email templates
 govuk_notify:

@@ -222,6 +222,8 @@ Start the service with the following environment variables set:
 - `SETTINGS__GOVUK_ONE_LOGIN__CLIENT_ID` - the client ID from your One Login service
 - `SETTINGS__GOVUK_ONE_LOGIN__PRIVATE_KEY` - the private key you generated, base64 encoded (you can use `cat private_key.pem | base64 | pbcopy` to encode the key)
 
+It is recommended to [enable Redis sessions](#configuring-redis) when testing the One Login integration, as the auth token we store on the session can cause the session cookie to exceed the browser's 4KB limit. 
+
 [GOV.UK One Login]: https://www.sign-in.service.gov.uk/
 
 ### Configuring Sentry

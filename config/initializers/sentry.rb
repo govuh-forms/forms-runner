@@ -8,6 +8,7 @@ if Settings.sentry.dsn.present?
     config.breadcrumbs_logger = %i[active_support_logger http_logger]
     config.debug = true
     config.environment = Settings.sentry.environment
+    config.rails.structured_logging.enabled = false
 
     filter = ActiveSupport::ParameterFilter.new(
       [EmailParameterFilterProc.new(mask: Settings.sentry.filter_mask)],

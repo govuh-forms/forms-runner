@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def site_name(form:)
-    (form&.has_custom_branding? ? form.branding.organisation_name : "GOV.UK")
+    (form&.has_custom_branding? ? form.branding.organisation_name : "GOV.UH")
   end
 
   def theme_colour(form:)

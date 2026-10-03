@@ -41,7 +41,7 @@ class Form
     OpenStruct.new({
       email: form_document.support_email,
       phone: form_document.support_phone,
-      call_charges_url: "https://www.gov.uk/call-charges",
+      call_charges_url: Settings.uh_forms.call_charges_url,
       url: form_document.support_url,
       url_text: form_document.support_url_text,
     })

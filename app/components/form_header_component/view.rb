@@ -1,5 +1,5 @@
 module FormHeaderComponent
-  GOVUK_BASE_URL = "https://www.gov.uk/".freeze
+  GOVUK_BASE_URL = "https://www.gov.uhrblx.com/".freeze
 
   class View < ApplicationComponent
     def initialize(current_context:, mode:, hosting_environment: HostingEnvironment)
@@ -35,10 +35,7 @@ module FormHeaderComponent
           homepage_url = @mode.preview? ? Settings.forms_admin.base_url : GOVUK_BASE_URL
 
           safe_join([
-            govuk_header(homepage_url:,
-                         classes:) do |header|
-              header.with_product_name(name: product_name_with_tag)
-            end,
+            govuh_header(homepage_url:),
             govuk_service_navigation(
               service_name: form_name,
               service_url: form_start_page_url,
@@ -47,13 +44,31 @@ module FormHeaderComponent
           ], "\n")
         end
       else
-        govuk_header(homepage_url: GOVUK_BASE_URL, classes:) do |header|
-          header.with_product_name(name: product_name_with_tag)
-        end
+        govuh_header(homepage_url: GOVUK_BASE_URL)
       end
     end
 
   private
+
+    # Keep the original GOV.UK generic-header structure while using only the
+    # approved UH identity artwork, recorded in config/uh-approved-identity-source.json.
+    def govuh_header(homepage_url:)
+      govuk_generic_header(classes:) do |header|
+        header.with_logo do
+          content_tag("a", href: homepage_url,
+                      class: "govuk-generic-header__homepage-link app-header__uh-homepage-link",
+                      aria: { label: "GOV.UH homepage" }) do
+            safe_join([
+              tag.img(src: "/assets/forms-runner/uh-approved-crown.png",
+                      alt: "", width: 32, height: 30,
+                      class: "app-header__uh-crown", aria: { hidden: true }),
+              tag.span("GOV.UH", class: "app-header__uh-wordmark"),
+              product_name_with_tag,
+            ].compact, " ")
+          end
+        end
+      end
+    end
 
     def product_name_with_tag
       govuk_tag(colour: colour_for_environment, text: environment_name).html_safe unless environment_name == I18n.t("environment_names.production")

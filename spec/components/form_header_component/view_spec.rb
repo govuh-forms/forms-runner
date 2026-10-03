@@ -12,10 +12,18 @@ RSpec.describe FormHeaderComponent::View, type: :component do
     expect(page).to have_text("test_form_name")
   end
 
-  it "links to the GOV.UK homepage" do
+  it "links to the GOV.UH homepage" do
     render_inline(described_class.new(current_context:, mode:))
 
-    expect(page.find("a.govuk-header__homepage-link")[:href]).to eq "https://www.gov.uk/"
+    expect(page.find("a.govuk-generic-header__homepage-link")[:href]).to eq "https://www.gov.uhrblx.com/"
+  end
+
+  it "renders only the approved UH crown source path and GOV.UH wordmark" do
+    render_inline(described_class.new(current_context:, mode:))
+    expect(page).to have_selector('img.app-header__uh-crown[src="/assets/forms-runner/uh-approved-crown.png"]')
+    expect(page).to have_text("GOV.UH")
+    expect(page).not_to have_selector("svg.govuk-header__logotype-crown")
+    expect(page.find("a.govuk-generic-header__homepage-link")[:'aria-label']).to eq("GOV.UH homepage")
   end
 
   it "links to the form start page" do

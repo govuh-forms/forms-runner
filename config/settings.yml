@@ -2,6 +2,10 @@ features:
   dummy: false
 
 
+# Use a verified, published GOV.UH call-charges page before exposing this link.
+uh_forms:
+  call_charges_url:
+
 forms_admin:
   # URL to form-admin
   base_url: http://localhost:3000
@@ -21,7 +25,8 @@ forms_product_page:
 govuk_one_login:
   private_key:
   client_id: changeme
-  base_url: https://oidc.integration.account.gov.uk/
+  # Inert until an approved GOV.UH identity issuer is configured for production.
+  base_url: https://identity-unconfigured.invalid/
 
 # Settings for GOV.UK Notify api & email templates
 govuk_notify:
@@ -80,4 +85,5 @@ cloudwatch_metrics_enabled: false
 analytics_enabled: false
 
 # Allows us to globally disable users getting a copy of their answers in the case that One Login is unavailable.
-copy_of_answers_enabled: true
+# Enable only after the GOV.UH identity integration has passed end-to-end acceptance.
+copy_of_answers_enabled: false

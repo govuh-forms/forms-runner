@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   get "/help/accessibility-statement" => "application#accessibility_statement", as: :accessibility_statement
   get "/help/cookies" => "application#cookies", as: :cookies
 
-  get "/security.txt" => redirect("https://vulnerability-reporting.service.security.gov.uk/.well-known/security.txt")
+  # The upstream UK vulnerability-reporting endpoint cannot accept UH reports.
+  # Keep these paths unavailable until a verified UH security contact is published.
+  get "/security.txt" => "errors#not_found"
   get "/submission" => "submission_status#status", as: :status
-  get "/.well-known/security.txt" => redirect("https://vulnerability-reporting.service.security.gov.uk/.well-known/security.txt")
+  get "/.well-known/security.txt" => "errors#not_found"
 
   get "/govuk-one-login-jwks", to: "one_login_jwks#show", as: :one_login_jwks
 

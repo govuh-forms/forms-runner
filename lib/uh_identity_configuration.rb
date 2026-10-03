@@ -2,6 +2,19 @@
 require "uri"
 
 module UhIdentityConfiguration
+  def self.approved_privacy_url(value)
+    return nil if value.to_s.empty?
+
+    uri = URI.parse(value.to_s)
+    host = uri.host&.downcase
+    valid = uri.scheme == "https" && host && host.end_with?(".gov.uhrblx.com") &&
+      uri.port == 443 && uri.userinfo.nil? && uri.query.nil? && uri.fragment.nil? &&
+      uri.path.start_with?("/") && uri.path.length > 1
+    valid ? uri.to_s : nil
+  rescue URI::InvalidURIError
+    nil
+  end
+
   def self.validate!(enabled:, issuer:, approved_issuer:, client_id:, private_key:)
     return true unless enabled
 

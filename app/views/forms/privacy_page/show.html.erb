@@ -56,9 +56,11 @@
 
     <p><%= t("privacy.data_we_collect.legal_bases.section_3") %></p>
 
-    <h2 class="govuk-heading-m"><%= t("privacy.using_one_login.heading") %></h2>
-
-    <p><%= t("privacy.using_one_login.section_0", one_login_link: link_to(t("privacy.using_one_login.section_0_link_text"), "https://www.gov.uk/government/publications/govuk-one-login-privacy-notice")).html_safe %></p>
+    <% uh_identity_privacy_url = UhIdentityConfiguration.approved_privacy_url(ENV["GOVUH_APPROVED_ONE_LOGIN_PRIVACY_URL"]) %>
+    <% if current_context.form.copy_of_answers_enabled? && uh_identity_privacy_url.present? %>
+      <h2 class="govuk-heading-m"><%= t("privacy.using_one_login.heading") %></h2>
+      <p><%= t("privacy.using_one_login.section_0", one_login_link: link_to(t("privacy.using_one_login.section_0_link_text"), uh_identity_privacy_url)).html_safe %></p>
+    <% end %>
 
     <h2 class="govuk-heading-m"><%= t("privacy.cookies.heading") %></h2>
 

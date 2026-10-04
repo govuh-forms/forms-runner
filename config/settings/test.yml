@@ -22,3 +22,7 @@ copy_of_answers_enabled: true
 
 govuk_one_login:
   base_url: http://example.com/one-login-mock/
+
+uh_forms:
+  # Existing upstream request examples exercise the original template only in test.
+  privacy_notice_approved: true

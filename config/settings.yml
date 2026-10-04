@@ -5,6 +5,8 @@ features:
 # Use a verified, published GOV.UH call-charges page before exposing this link.
 uh_forms:
   call_charges_url:
+  # The imported UK controller/privacy wording is not an approved UH notice.
+  privacy_notice_approved: false
 
 forms_admin:
   # URL to form-admin

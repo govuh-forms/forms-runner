@@ -16,12 +16,12 @@ en:
     help:
       email_html: If you have difficulty using this form or need the form in a different format, send an email to <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a> - include the name of the form in your email.
       heading: What to do if you have difficulty using this form
-    inset_text_html: This form is part of the wider GOV.UK website. There’s a separate <a href="https://www.gov.uk/help/accessibility-statement">accessibility statement for the main GOV.UK website</a>.
+    inset_text_html: This form is part of the wider GOV.UH website. There’s a separate <a href="https://www.gov.uhrblx.com/help/accessibility-statement">accessibility statement for the main GOV.UH website</a>.
     limitations:
       departmental_responsibility: The questions in the form are written by people in government departments and agencies. Each department and agency which publishes content on GOV.UK is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
       departmental_responsibility_branded: The questions in the form are written by people in government departments, agencies and other public sector organisations. Each organisation is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
-      forms_issues: Issues relating to the GOV.UK Forms interface are listed in ‘Technical information about this form’s accessibility’ below.
-      guidance: To encourage accessible content we provide guidance within the GOV.UK Forms platform. We also use feedback and analytics to identify accessibility issues.
+      forms_issues: Issues relating to the GOV.UH Forms interface are listed in ‘Technical information about this form’s accessibility’ below.
+      guidance: To encourage accessible content we provide guidance within the GOV.UH Forms platform. We also use feedback and analytics to identify accessibility issues.
       heading: How accessible this form is
       some_inaccessible_text: Some parts of this form may not be fully accessible.
     non_accessible_content:
@@ -49,18 +49,18 @@ en:
         preamble: Although the following issues do not fail WCAG 2.2 AA, we plan to investigate and fix them as soon as possible.
       preamble: The content listed below is non-accessible for the following reasons.
     preamble: This accessibility statement applies to online forms with a URL that starts with https://submit.forms.service.gov.uk.
-    preamble_branded: This form was created using a platform called GOV.UK Forms, built by the Government Digital Service (GDS). Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
+    preamble_branded: This form was created using a platform called GOV.UH Forms, built by the Platform Office. Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
     reporting:
       email_html: If you find any problems, or think we’re not meeting accessibility requirements, email us at <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a>.
       heading: Reporting accessibility problems
-      text: We’re always looking to improve the accessibility of forms made with GOV.UK Forms.
+      text: We’re always looking to improve the accessibility of forms made with GOV.UH Forms.
     statement_preparation:
-      WCAG_version: GDS assessed the forms against the Web Content Accessibility Guidelines WCAG 2.2.
+      WCAG_version: The Platform Office assessed the forms against the Web Content Accessibility Guidelines WCAG 2.2.
       date: This statement was first prepared on 20 February 2024. It was last reviewed and updated on 19 August 2025.
       heading: Preparation of this accessibility statement
-      last_tested: Forms created using the GOV.UK Forms platform were last tested on 9 January 2024. The test was carried out by GDS.
+      last_tested: Forms created using the GOV.UH Forms platform were last tested on 9 January 2024. The test was carried out by GDS.
     technical_information:
-      commitment: GDS is committed to making this form accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+      commitment: The Platform Office is committed to making this form accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
       compliance_status:
         heading: Compliance status
         partial_compliance_html: This form is partially compliant with the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines version 2.2 AA standard</a>, due to the non-compliances listed below.
@@ -76,8 +76,8 @@ en:
       accessibility_recommendations_text: 'You should be able to:'
       content_guidance: The text in the form should be clear and simple to understand.
       disability_advice_html: <a href="https://mcmw.abilitynet.org.uk/">AbilityNet</a> has advice on making your device easier to use if you have a disability.
-      forms_description_branded_html: GOV.UK Forms is designed to create forms that can be used by as many people as possible.
-      forms_description_html: This form was created using a platform called <a href="http://www.gov.uk/forms">GOV.UK Forms</a>. GOV.UK Forms is built by the Government Digital Service (GDS). It is designed to create forms that can be used by as many people as possible.
+      forms_description_branded_html: GOV.UH Forms is designed to create forms that can be used by as many people as possible.
+      forms_description_html: This form was created using a platform called <a href="https://www.gov.uhrblx.com/forms">GOV.UH Forms</a>. GOV.UH Forms is built by the Platform Office. It is designed to create forms that can be used by as many people as possible.
       heading: Using this form
   activemodel:
     errors:
@@ -221,7 +221,7 @@ en:
     accept: Accept analytics cookies
     aria_label: Cookie banner
     content: We’d like to use analytics cookies so we can understand how you use this website and make improvements.
-    heading: Cookies on GOV.UK Forms
+    heading: Cookies on GOV.UH Forms
     policy_link: How we use cookies
     reject: Reject analytics cookies
   cookie_consent:
@@ -240,7 +240,7 @@ en:
   cookies:
     analytics_cookies:
       heading: Analytics cookies (optional)
-      section_0: We use Google Analytics software to understand how people use GOV.UK Forms. This information helps us to improve our service.
+      section_0: We use Google Analytics software to understand how people use GOV.UH Forms. This information helps us to improve our service.
       section_1: Google is not allowed to use or share our analytics data with anyone.
       section_2:
         caption: 'Google Analytics stores anonymised information about:'
@@ -257,7 +257,7 @@ en:
           column_2: Expires
         row_1:
           column_0: _ga
-          column_1: Helps us count how many people visit GOV.UK Forms by telling us if you’ve visited before.
+          column_1: Helps us count how many people visit GOV.UH Forms by telling us if you’ve visited before.
           column_2: 2 years
         row_2:
           column_0: _ga_[random number]
@@ -430,7 +430,7 @@ en:
         remove: Remove
         remove_file_guidance: You can remove this file if you need to upload a different one.
         your_file: Your file
-  gov_uk_forms: GOV.UK Forms
+  gov_uk_forms: GOV.UH Forms
   govuk_components:
     govuk_summary_list:
       change: Change
@@ -489,7 +489,7 @@ en:
       answers_submitted: Answers submitted
       csv_file: 'A CSV file of these answers is attached to this email in a file named: %{filename}'
       file_attached: "%{filename} (attached to this email)"
-      from: GOV.UK Forms <%{email_address}>
+      from: GOV.UH Forms <%{email_address}>
       json_file: 'A JSON file of these answers is attached to this email in a file named: %{filename}'
       payment: You can check that a payment has been made by using this reference number to search transactions within GOV.​UK Pay.
       preview: This is a test submission from a preview of this form.
@@ -594,7 +594,7 @@ en:
         list_item_1: monitor the use of the site for security threats
         list_item_2: monitor the performance of the site to identify inefficiencies and JavaScript errors
       section_2: We collect this information in system logs. These logs are stored in the EU.
-      section_3: We may also use this information to produce anonymised reports about the GOV.UK Forms service. This helps us understand where we can make improvements. We may share this information with the data controller of the form.
+      section_3: We may also use this information to produce anonymised reports about the GOV.UH Forms service. This helps us understand where we can make improvements. We may share this information with the data controller of the form.
     heading: 'Privacy notice: how we use your data'
     how_long_we_keep_data:
       heading: How long we keep your data
@@ -608,10 +608,10 @@ en:
       section_0: We are committed to doing all that we can to keep your data secure. To prevent unauthorised access or disclosure we have put in place technical and organisational procedures to secure the data we collect about you – for example, we protect your data using varying levels of encryption. We also make sure that any third parties that we deal with have an obligation to keep all personal data they process on our behalf secure.
     preamble:
       section_0: 'Last updated: 6 July 2026'
-      section_1: This form was created using GOV.UK Forms. GOV.UK Forms is a product provided by the Government Digital Service (GDS) which is part of the Department for Science, Innovation and Technology. It lets UK government teams create online forms to collect information from people and organisations.
-      section_2: The organisation that created this online form using GOV.UK Forms is the data controller of personal data they collect using the form, whilst the Department for Science, Innovation and Technology, through GDS, is the data processor. The data controller must tell you about what they are doing with your personal data - %{privacy_policy_link}.
+      section_1: This form was created using GOV.UH Forms. GOV.UH Forms is a product provided by the Platform Office which is part of the Department for Science, Innovation and Technology. It lets UK government teams create online forms to collect information from people and organisations.
+      section_2: The organisation that created this online form using GOV.UH Forms is the data controller of personal data they collect using the form, whilst the Department for Science, Innovation and Technology, through GDS, is the data processor. The data controller must tell you about what they are doing with your personal data - %{privacy_policy_link}.
       section_2_link_text: read the data controller’s privacy information for this form
-      section_3: The Department for Science, Innovation and Technology also collects some data as a data controller. This privacy notice explains what personal data the Department for Science, Innovation and Technology collects and processes as a data controller through forms made with GOV.UK Forms.
+      section_3: The Department for Science, Innovation and Technology also collects some data as a data controller. This privacy notice explains what personal data the Department for Science, Innovation and Technology collects and processes as a data controller through forms made with GOV.UH Forms.
       section_4: Read %{dppr_link} for more information.
       section_4_link_text: the Department for Science, Innovation and Technology’s entry in the Data Protection Public Register
     questions_and_complaints:

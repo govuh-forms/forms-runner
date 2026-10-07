@@ -1,9 +1,9 @@
 module HostPatterns
   DEFAULT_HOST_PATTERNS = [
-    /submit\.forms\.service\.gov\.uk/,
-    /submit\.[^.]*\.forms\.service\.gov\.uk/,
-    /submit\.internal.[^.]*\.forms\.service\.gov\.uk/,
-    /pr-[^.]*\.submit\.review\.forms\.service\.gov\.uk/,
+    /submit\.forms\.service\.gov\.uhrblx\.com/,
+    /submit\.[^.]*\.forms\.service\.gov\.uhrblx\.com/,
+    /submit\.internal.[^.]*\.forms\.service\.gov\.uhrblx\.com/,
+    /pr-[^.]*\.submit\.review\.forms\.service\.gov\.uhrblx\.com/,
   ].freeze
 
   def self.allowed_host_patterns

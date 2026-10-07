@@ -1,0 +1,5 @@
+forms_product_page:
+  base_url: https://forms.service.gov.uhrblx.com
+
+govuk_one_login:
+  base_url: https://one-login.account.gov.uhrblx.com/

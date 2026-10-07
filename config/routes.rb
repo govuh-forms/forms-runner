@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get "/help/accessibility-statement" => "application#accessibility_statement", as: :accessibility_statement
   get "/help/cookies" => "application#cookies", as: :cookies
 
-  get "/security.txt" => redirect("https://forms.service.gov.uhrblx.com/support")
+  get "/security.txt" => "errors#not_found"
   get "/submission" => "submission_status#status", as: :status
-  get "/.well-known/security.txt" => redirect("https://forms.service.gov.uhrblx.com/support")
+  get "/.well-known/security.txt" => "errors#not_found"
 
   get "/govuk-one-login-jwks", to: "one_login_jwks#show", as: :one_login_jwks
 

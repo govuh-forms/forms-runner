@@ -1,3 +1,17 @@
+require Rails.root.join("lib/uh_identity_configuration")
+
+# The GOV.UK OAuth strategy remains an upstream implementation dependency.
+# Enabling the UH journey requires an independently approved UH issuer.
+if Rails.env.production?
+  UhIdentityConfiguration.validate!(
+    enabled: Settings.copy_of_answers_enabled,
+    issuer: Settings.govuk_one_login.base_url,
+    approved_issuer: ENV["GOVUH_APPROVED_IDENTITY_ISSUER"],
+    client_id: Settings.govuk_one_login.client_id,
+    private_key: Settings.govuk_one_login.private_key,
+  )
+end
+
 OmniAuth.config.logger = Rails.logger
 
 private_key_pem = Settings.govuk_one_login.private_key

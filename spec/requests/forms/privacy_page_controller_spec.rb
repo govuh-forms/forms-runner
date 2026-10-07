@@ -33,6 +33,22 @@ RSpec.describe Forms::PrivacyPageController, type: :request do
 
   let(:req_headers) { { "Accept" => "application/json" } }
 
+  context "when UH privacy information has not been approved" do
+    it "returns 503 rather than presenting the inherited UK departmental notice" do
+      allow(Settings.uh_forms).to receive(:privacy_notice_approved).and_return(false)
+      ActiveResource::HttpMock.respond_to do |mock|
+        mock.get "/api/v2/forms/2/draft", req_headers, form_data.to_json, 200
+      end
+
+      get form_privacy_path(mode: "preview-draft", form_id: 2, form_slug: form_data.form_slug)
+
+      expect(response).to have_http_status(:service_unavailable)
+      expect(response).to render_template("errors/privacy_notice_unavailable")
+      expect(response.body).not_to include("gds.data.protection@dsit.gov.uk")
+      expect(response.body).not_to include("dataprotection@dsit.gov.uk")
+    end
+  end
+
   describe "#show" do
     before do
       ActiveResource::HttpMock.respond_to do |mock|

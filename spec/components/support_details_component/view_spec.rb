@@ -37,6 +37,13 @@ RSpec.describe SupportDetailsComponent::View, type: :component do
     end
   end
 
+  context "with telephone contact details and no approved call-charges page" do
+    it "does not send users to the UK Government website" do
+      render_inline(described_class.new(OpenStruct.new(phone: "01610123456", call_charges_url: nil)))
+      expect(page).not_to have_link("Find out about call charges (opens in new tab)")
+    end
+  end
+
   context "with phone contact details" do
     let(:contact_details) do
       {

@@ -49,7 +49,7 @@ RSpec.describe Form, type: :model do
       expect(support_details.phone).to eq("0203 222 2222")
       expect(support_details.url).to eq("https://example.gov.uk/help")
       expect(support_details.url_text).to eq("Get help with this form")
-      expect(support_details.call_charges_url).to eq("https://www.gov.uk/call-charges")
+      expect(support_details.call_charges_url).to be_nil
     end
   end
 

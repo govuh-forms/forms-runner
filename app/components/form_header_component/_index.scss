@@ -16,3 +16,36 @@
   gap: 0.25em;
   flex-wrap: wrap;
 }
+
+
+/* The original GOV.UK generic-header component with approved UH artwork.
+   Do not import the upstream UK Tudor Crown or Royal Arms assets. */
+.app-header {
+  background-color: govuk-colour("black");
+  border-bottom: 10px solid govuk-colour("blue");
+}
+
+.app-header__uh-homepage-link {
+  display: inline-flex;
+  align-items: center;
+  gap: govuk-spacing(2);
+  color: govuk-colour("white");
+  text-decoration: none;
+}
+
+.app-header__uh-crown {
+  display: block;
+  width: 32px;
+  height: 30px;
+  flex: none;
+}
+
+.app-header__uh-wordmark {
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1;
+}
+
+.app-header__uh-homepage-link:focus {
+  color: govuk-colour("black");
+}

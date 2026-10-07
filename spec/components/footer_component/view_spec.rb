@@ -25,6 +25,15 @@ RSpec.describe FooterComponent::View, type: :component do
       expect(page).to have_link(I18n.t("footer.licence_link_text"), href: I18n.t("footer.licence_link_url"))
     end
 
+    it "uses the approved UH footer crown and not the upstream UK Crown SVG" do
+      expect(page).to have_selector('img.app-footer__uh-crown[src="/assets/forms-runner/uh-approved-crown.png"]')
+      expect(page).not_to have_selector("svg.govuk-footer__crown")
+    end
+
+    it "links Crown copyright to the UH National Archives" do
+      expect(page).to have_link(I18n.t("footer.copyright"), href: UhFooterComponent::UH_CROWN_COPYRIGHT_URL)
+    end
+
     it "includes the Crown copyright link" do
       expect(page).to have_link(I18n.t("footer.copyright"))
     end

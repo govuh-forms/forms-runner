@@ -18,8 +18,20 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
 
       it "returns the title with the GOV.UK suffix" do
-        expect(view.content_for(:title)).to eq("Test – GOV.UK Forms")
+        expect(view.content_for(:title)).to eq("Test – GOV.UH Forms")
       end
+    end
+  end
+
+  describe "#site_name" do
+    it "uses GOV.UH for unbranded forms" do
+      expect(helper.site_name(form: nil)).to eq("GOV.UH")
+    end
+
+    it "preserves the originating organisation for custom-branded forms" do
+      branding = OpenStruct.new(organisation_name: "UH Department")
+      form = OpenStruct.new(has_custom_branding?: true, branding: branding)
+      expect(helper.site_name(form: form)).to eq("UH Department")
     end
   end
 

@@ -5,7 +5,7 @@ en:
       accessibility_regulations: The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’).
       complaints_html: If you’re not happy with how we respond to your complaint, contact the <a href="https://www.equalityadvisoryservice.com/">Equality Advisory and Support Service</a>, which is run on behalf of EHRC.
       heading: If you’re not happy with our response
-    coverage_branded: This accessibility statement covers only the form, which will have a URL starting with https://submit.forms.service.gov.uk. The organisation publishing the form will have a separate statement covering the accessibility of its own website.
+    coverage_branded: This accessibility statement covers only the form, which will have a URL starting with https://submit.forms.service.gov.uhrblx.com. The organisation publishing the form will have a separate statement covering the accessibility of its own website.
     explains_list:
       list_item_0: how accessible the form is
       list_item_1: what to do if you have difficulty using it
@@ -14,11 +14,11 @@ en:
     explains_text: This accessibility statement explains
     heading: Accessibility statement for this form
     help:
-      email_html: If you have difficulty using this form or need the form in a different format, send an email to <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a> - include the name of the form in your email.
+      email_html: If you have difficulty using this form or need the form in a different format, use <a href="https://www.forms.service.gov.uhrblx.com/support">GOV.UH Forms support</a> and include the name of the form in your message.
       heading: What to do if you have difficulty using this form
     inset_text_html: This form is part of the wider GOV.UH website. There’s a separate <a href="https://www.gov.uhrblx.com/help/accessibility-statement">accessibility statement for the main GOV.UH website</a>.
     limitations:
-      departmental_responsibility: The questions in the form are written by people in government departments and agencies. Each department and agency which publishes content on GOV.UK is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
+      departmental_responsibility: The questions in the form are written by people in government departments and agencies. Each department and agency which publishes content on GOV.UH is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
       departmental_responsibility_branded: The questions in the form are written by people in government departments, agencies and other public sector organisations. Each organisation is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
       forms_issues: Issues relating to the GOV.UH Forms interface are listed in ‘Technical information about this form’s accessibility’ below.
       guidance: To encourage accessible content we provide guidance within the GOV.UH Forms platform. We also use feedback and analytics to identify accessibility issues.
@@ -48,19 +48,19 @@ en:
           list_item_8: It can be difficult to open the ‘Get help with this form’ link when using the Dragon web extension on Chrome. This could make it harder to get help with the form.
         preamble: Although the following issues do not fail WCAG 2.2 AA, we plan to investigate and fix them as soon as possible.
       preamble: The content listed below is non-accessible for the following reasons.
-    preamble: This accessibility statement applies to online forms with a URL that starts with https://submit.forms.service.gov.uk.
-    preamble_branded: This form was created using a platform called GOV.UH Forms, built by the Platform Office. Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
+    preamble: This accessibility statement applies to online forms with a URL that starts with https://submit.forms.service.gov.uhrblx.com.
+    preamble_branded: This form was created using a platform called GOV.UH Forms, built by the Government Digital Service. Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
     reporting:
       email_html: If you find any problems, or think we’re not meeting accessibility requirements, email us at <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a>.
       heading: Reporting accessibility problems
       text: We’re always looking to improve the accessibility of forms made with GOV.UH Forms.
     statement_preparation:
-      WCAG_version: The Platform Office assessed the forms against the Web Content Accessibility Guidelines WCAG 2.2.
+      WCAG_version: The Government Digital Service assessed the forms against the Web Content Accessibility Guidelines WCAG 2.2.
       date: This statement was first prepared on 20 February 2024. It was last reviewed and updated on 19 August 2025.
       heading: Preparation of this accessibility statement
       last_tested: Forms created using the GOV.UH Forms platform were last tested on 9 January 2024. The test was carried out by GDS.
     technical_information:
-      commitment: The Platform Office is committed to making this form accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+      commitment: The Government Digital Service is committed to making this form accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
       compliance_status:
         heading: Compliance status
         partial_compliance_html: This form is partially compliant with the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines version 2.2 AA standard</a>, due to the non-compliances listed below.
@@ -77,7 +77,7 @@ en:
       content_guidance: The text in the form should be clear and simple to understand.
       disability_advice_html: <a href="https://mcmw.abilitynet.org.uk/">AbilityNet</a> has advice on making your device easier to use if you have a disability.
       forms_description_branded_html: GOV.UH Forms is designed to create forms that can be used by as many people as possible.
-      forms_description_html: This form was created using a platform called <a href="https://www.gov.uhrblx.com/forms">GOV.UH Forms</a>. GOV.UH Forms is built by the Platform Office. It is designed to create forms that can be used by as many people as possible.
+      forms_description_html: This form was created using a platform called <a href="https://www.gov.uhrblx.com/forms">GOV.UH Forms</a>. GOV.UH Forms is built by the Government Digital Service. It is designed to create forms that can be used by as many people as possible.
       heading: Using this form
   activemodel:
     errors:
@@ -298,7 +298,7 @@ en:
   errors:
     auth_error:
       body_html: |
-        <p>We could not confirm your email address using GOV.UK One Login.</p>
+        <p>We could not confirm your email address using GOV.UH One Login.</p>
         <p>You’ll need to go back to the form and submit your answers.</p>
         <p><a href="%{link_url}">Back to form</a></p>
       title: Sorry, something has gone wrong
@@ -337,7 +337,7 @@ en:
       title: For your security, we deleted your answers
     return_from_one_login_session_missing:
       body_html: |
-        <p>We could not confirm your email address using GOV.UK One Login.</p>
+        <p>We could not confirm your email address using GOV.UH One Login.</p>
         <p>You’ll need to go back to the form and submit your answers - try clicking the ‘Back’ button in your browser.</p>
       title: Sorry, something has gone wrong
     submission_error:
@@ -353,7 +353,7 @@ en:
     helpful_links: Helpful links
     licence: All content is available under the %{link}, except where otherwise stated
     licence_link_text: Open Government Licence v3.0
-    licence_link_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    licence_link_url: https://nationalarchives.gov.uhrblx.com/doc/open-government-licence/version/3/
     privacy_policy: Privacy
   form:
     archived:
@@ -368,7 +368,7 @@ en:
       'no': 'No'
       no_copy_of_answers: You’ve chosen to not get a copy of your answers
       not_completed: Not completed
-      send_copy: 'We’ll send a confirmation email with a copy of your answers to your GOV.UK One Login email address: %{email_address}'
+      send_copy: 'We’ll send a confirmation email with a copy of your answers to your GOV.UH One Login email address: %{email_address}'
       submit: Submit
       title: Check your answers before submitting your form
     submitted:
@@ -401,13 +401,13 @@ en:
     back: Back
     continue_to_one_login:
       show:
-        body_html: "<p>The email with your answers will be sent to the email address linked to your GOV.UK One Login.</p><p>If you need the answers sent to a different email address - for example, your work email - you can create a new GOV.UK One Login.</p>"
-        continue_button: Continue to GOV.UK One Login
-        title: Use GOV.UK One Login to keep your information secure
+        body_html: "<p>The email with your answers will be sent to the email address linked to your GOV.UH One Login.</p><p>If you need the answers sent to a different email address - for example, your work email - you can create a new GOV.UH One Login.</p>"
+        continue_button: Continue to GOV.UH One Login
+        title: Use GOV.UH One Login to keep your information secure
     copy_of_answers:
       show:
         heading: Do you want to get an email with a copy of your answers?
-        hint: You’ll need a GOV.UK One Login for this - you’ll be able to sign in or create a new one.
+        hint: You’ll need a GOV.UH One Login for this - you’ll be able to sign in or create a new one.
         title: Do you want a copy of your answers?
     remove_answer:
       show:
@@ -481,7 +481,7 @@ en:
       contacted_group_admins_paragraph: The form is in the group “%{group_name}”, which has no group admins or whose group admins have not responded.
     cannot_reply:
       contact_form_filler_markdown: If you need to contact the person who completed this form, you’ll need to contact them directly.
-      contact_forms_team_markdown: If you’re experiencing a technical issue with this form, [contact the GOV.​UK Forms team](https://www.forms.service.gov.uk/support) with details of the issue and the form it relates to.
+      contact_forms_team_markdown: If you’re experiencing a technical issue with this form, [contact the GOV.UH Forms team](https://www.forms.service.gov.uhrblx.com/support) with details of the issue and the form it relates to.
       heading: You cannot reply to this email
     check_before_using: Check that these answers look safe before you use them
     form_name: 'Form name: “%{form_name}”'
@@ -608,7 +608,7 @@ en:
       section_0: We are committed to doing all that we can to keep your data secure. To prevent unauthorised access or disclosure we have put in place technical and organisational procedures to secure the data we collect about you – for example, we protect your data using varying levels of encryption. We also make sure that any third parties that we deal with have an obligation to keep all personal data they process on our behalf secure.
     preamble:
       section_0: 'Last updated: 6 July 2026'
-      section_1: This form was created using GOV.UH Forms. GOV.UH Forms is a product provided by the Platform Office which is part of the Department for Science, Innovation and Technology. It lets UK government teams create online forms to collect information from people and organisations.
+      section_1: This form was created using GOV.UH Forms. GOV.UH Forms is a product provided by the Government Digital Service, which is part of the Department for Science, Innovation and Technology. It lets government teams create online forms to collect information from people and organisations.
       section_2: The organisation that created this online form using GOV.UH Forms is the data controller of personal data they collect using the form, whilst the Department for Science, Innovation and Technology, through GDS, is the data processor. The data controller must tell you about what they are doing with your personal data - %{privacy_policy_link}.
       section_2_link_text: read the data controller’s privacy information for this form
       section_3: The Department for Science, Innovation and Technology also collects some data as a data controller. This privacy notice explains what personal data the Department for Science, Innovation and Technology collects and processes as a data controller through forms made with GOV.UH Forms.
@@ -636,12 +636,12 @@ en:
         line_4: Cheshire SK9 5AF
     title: Privacy
     using_one_login:
-      heading: Using GOV.UK One Login
-      section_0: When filling in a form, you may be asked to use GOV.UK One Login to confirm your details. You can find information about how GOV.UK One Login uses your data in the %{one_login_link}.
-      section_0_link_text: GOV.UK One Login privacy notice
+      heading: Using GOV.UH One Login
+      section_0: When filling in a form, you may be asked to use GOV.UH One Login to confirm your details. You can find information about how GOV.UH One Login uses your data in the %{one_login_link}.
+      section_0_link_text: GOV.UH One Login privacy notice
     where_data_is_stored:
       heading: Where your data is processed and stored
-      section_0: Your personal data may be transferred outside the United Kingdom while being processed by GDS. If this happens, we’ll make sure you’re given the same level of technical and legal protection as you are within the United Kingdom by relying on the UK Government’s data adequacy decisions or by including clauses in contracts that require the recipient to protect the data in accordance with UK standards.
+      section_0: Your personal data may be processed outside the location in which it was collected. Where this happens, the data controller and processor must ensure appropriate safeguards are in place in accordance with applicable data protection law.
     your_rights:
       heading: Your rights
       section_0:

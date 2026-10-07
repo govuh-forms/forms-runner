@@ -22,7 +22,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     private_key_kid: public_key_jwk&.kid,
     signing_algorithm: "ES256",
     scope: "openid email",
-    ui_locales: "en cy",
+    ui_locales: "en",
     vtr: ["Cl.Cm"],
     pkce: true,
     userinfo_claims: [],

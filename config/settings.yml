@@ -21,7 +21,7 @@ forms_product_page:
 govuk_one_login:
   private_key:
   client_id: changeme
-  base_url: https://oidc.integration.account.gov.uk/
+  base_url: https://one-login.account.gov.uhrblx.com/
 
 # Settings for GOV.UK Notify api & email templates
 govuk_notify:

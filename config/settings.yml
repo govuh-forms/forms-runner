@@ -1,6 +1,10 @@
 features:
   dummy: false
 
+uh_forms:
+  # Expose only after the responsible UH owner has published these products.
+  call_charges_url:
+  privacy_notice_approved: false
 
 forms_admin:
   # URL to form-admin

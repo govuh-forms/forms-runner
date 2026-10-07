@@ -10,8 +10,8 @@ aws:
   ses_confirmation_email_configuration_set_name: bounces_and_complaints_handling_rule
 
 ses_submission_email:
-  from_email_address: "local-test@dev.forms.service.gov.uk"
-  reply_to_email_address: "local-test@dev.forms.service.gov.uk"
+  from_email_address: "local-test@dev.forms.service.gov.uhrblx.com"
+  reply_to_email_address: "local-test@dev.forms.service.gov.uhrblx.com"
 
 submission_status_api:
   secret: test_token

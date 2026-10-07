@@ -1,5 +1,5 @@
 module FormHeaderComponent
-  GOVUK_BASE_URL = "https://www.gov.uk/".freeze
+  GOVUK_BASE_URL = "https://www.gov.uhrblx.com/".freeze
 
   class View < ApplicationComponent
     def initialize(current_context:, mode:, hosting_environment: HostingEnvironment)
@@ -37,6 +37,7 @@ module FormHeaderComponent
           safe_join([
             govuk_header(homepage_url:,
                          classes:) do |header|
+              header.with_custom_logo { render "shared/gov_uh_logo" }
               header.with_product_name(name: product_name_with_tag)
             end,
             govuk_service_navigation(
@@ -48,6 +49,7 @@ module FormHeaderComponent
         end
       else
         govuk_header(homepage_url: GOVUK_BASE_URL, classes:) do |header|
+          header.with_custom_logo { render "shared/gov_uh_logo" }
           header.with_product_name(name: product_name_with_tag)
         end
       end

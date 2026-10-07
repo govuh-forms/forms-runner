@@ -13,7 +13,6 @@
     <p><%= t("privacy.preamble.section_1") %></p>
     <p><%= t("privacy.preamble.section_2", privacy_policy_link: link_to(t("privacy.preamble.section_2_link_text"), @privacy_policy_url)).html_safe %></p>
     <p><%= t("privacy.preamble.section_3") %></p>
-    <p><%= t("privacy.preamble.section_4", dppr_link: link_to(t("privacy.preamble.section_4_link_text"), "https://ico.org.uk/ESDWebPages/Entry/ZB546218")).html_safe %></p>
 
     <h2 class="govuk-heading-m"><%= t("privacy.data_we_collect.heading") %></h2>
 
@@ -109,43 +108,14 @@
 
     <h2 class="govuk-heading-m"><%= t("privacy.questions_and_complaints.heading") %></h2>
 
-    <p><%= t("privacy.questions_and_complaints.section_0.caption", contact_link: link_to("gds.data.protection@dsit.gov.uk", "mailto:gds.data.protection@dsit.gov.uk")).html_safe %></p>
+    <p><%= t(
+      "privacy.questions_and_complaints.section_0",
+      contact_link: link_to(
+        t("privacy.questions_and_complaints.section_0_link_text"),
+        @privacy_policy_url,
+      ),
+    ).html_safe %></p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li><%= t("privacy.questions_and_complaints.section_0.list_item_0") %></li>
-      <li><%= t("privacy.questions_and_complaints.section_0.list_item_1") %></li>
-    </ul>
-
-    <p>
-      <%= t("privacy.questions_and_complaints.section_1.line_0") %>
-      <br>
-      <%= govuk_link_to "dataprotection@dsit.gov.uk", "mailto:dataprotection@dsit.gov.uk" %>
-      <br>
-      <%= t("privacy.questions_and_complaints.section_1.line_1") %>
-      <br>
-      <%= t("privacy.questions_and_complaints.section_1.line_2") %>
-      <br>
-      <%= t("privacy.questions_and_complaints.section_1.line_3") %>
-      <br>
-      <%= t("privacy.questions_and_complaints.section_1.line_4") %>
-    </p>
-
-    <p><%= t("privacy.questions_and_complaints.section_2", ico_link: link_to(t("privacy.questions_and_complaints.section_2_link_text"), "https://ico.org.uk/")).html_safe %></p>
-
-    <p>
-      <%= t("privacy.questions_and_complaints.section_3.line_0") %>
-      <br>
-      <%= govuk_link_to "icocasework@ico.org.uk", "mailto:icocasework@ico.org.uk" %>
-      <br />
-      0303 123 1113
-      <br />
-      <%= t("privacy.questions_and_complaints.section_3.line_1") %>
-      <br />
-      <%= t("privacy.questions_and_complaints.section_3.line_2") %>
-      <br />
-      <%= t("privacy.questions_and_complaints.section_3.line_3") %>
-      <br />
-      <%= t("privacy.questions_and_complaints.section_3.line_4") %>
-    </p>
+    <p><%= t("privacy.questions_and_complaints.section_1") %></p>
   </div>
 </div>

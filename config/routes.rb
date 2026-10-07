@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   form_id_constraints = { form_id: UrlPatterns::FORM_ID_REGEX }
   form_constraints = {
     **form_id_constraints,
-    locale: /(en|cy)/,
+    locale: /en/,
     form_slug: UrlPatterns::FORM_SLUG_REGEX,
   }
 

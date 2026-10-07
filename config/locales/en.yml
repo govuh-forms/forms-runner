@@ -51,7 +51,7 @@ en:
     preamble: This accessibility statement applies to online forms with a URL that starts with https://submit.forms.service.gov.uhrblx.com.
     preamble_branded: This form was created using a platform called GOV.UH Forms, built by the Government Digital Service. Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
     reporting:
-      email_html: If you find any problems, or think we’re not meeting accessibility requirements, email us at <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a>.
+      email_html: If you find any problems, or think we’re not meeting accessibility requirements, use <a href="https://www.forms.service.gov.uhrblx.com/support">GOV.UH Forms support</a>.
       heading: Reporting accessibility problems
       text: We’re always looking to improve the accessibility of forms made with GOV.UH Forms.
     statement_preparation:

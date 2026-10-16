@@ -9,7 +9,13 @@ class S3SubmissionService
 
   def submit
     raise StandardError, "S3 bucket name is not set on the form" if @form.s3_bucket_name.nil?
-    raise StandardError, "S3 bucket account ID is not set on the form" if @form.s3_bucket_aws_account_id.nil?
+    raise StandardError, "S3 bucket account ID is not set on the form" if !interior_garage_bucket? && @form.s3_bucket_aws_account_id.nil?
+    if interior_garage_bucket?
+      raise StandardError, "Interior Garage delivery is not enabled for this form" unless [3, 4].include?(@form.id.to_i)
+      raise StandardError, "Interior Garage accepts native JSON submissions only" unless @delivery.formats == %w[json]
+      raise StandardError, "Garage upload configuration is missing" unless interior_garage_enabled?
+      raise StandardError, "Uploaded files require an approved evidence delivery route" if @journey.completed_file_upload_questions.any?
+    end
     raise StandardError, "S3 bucket region is not set on the form" if @form.s3_bucket_region.nil?
 
     # We send the uploaded files before the submissions CSV so that processors can have automations run when the CSV
@@ -74,23 +80,45 @@ private
   end
 
   def upload_submission_to_s3(submission_content, key)
-    s3_client.put_object({
-      body: submission_content,
-      bucket: @form.s3_bucket_name,
-      expected_bucket_owner: @form.s3_bucket_aws_account_id,
-      key: key,
-    })
+    params = { body: submission_content, bucket: @form.s3_bucket_name, key: key }
+    params[:expected_bucket_owner] = @form.s3_bucket_aws_account_id unless interior_garage_bucket?
+    s3_client.put_object(params)
     Rails.logger.info("Uploaded submission to S3", { key: })
 
     submission_duration_ms = (Time.current - @submission.submission_time).in_milliseconds.round
     CloudWatchService.record_submission_delivery_latency_metric(submission_duration_ms, "S3")
   end
 
+  INTERIOR_GARAGE_BUCKET = "uh-interior-citizenship-submissions"
+
+  def interior_garage_bucket?
+    @form.s3_bucket_name == INTERIOR_GARAGE_BUCKET
+  end
+
+  def interior_garage_enabled?
+    ENV["UH_INTERIOR_GARAGE_ENDPOINT"].present? &&
+      ENV["UH_INTERIOR_GARAGE_ACCESS_KEY_ID"].present? &&
+      ENV["UH_INTERIOR_GARAGE_SECRET_ACCESS_KEY"].present?
+  end
+
   def s3_client
-    @s3_client ||= Aws::S3::Client.new(
-      region: @form.s3_bucket_region,
-      credentials: assume_role,
-    )
+    @s3_client ||= if interior_garage_bucket?
+      raise StandardError, "Interior Garage credentials are not configured" unless interior_garage_enabled?
+      Aws::S3::Client.new(
+        region: "garage",
+        endpoint: ENV.fetch("UH_INTERIOR_GARAGE_ENDPOINT"),
+        force_path_style: true,
+        credentials: Aws::Credentials.new(
+          ENV.fetch("UH_INTERIOR_GARAGE_ACCESS_KEY_ID"),
+          ENV.fetch("UH_INTERIOR_GARAGE_SECRET_ACCESS_KEY"),
+        ),
+      )
+    else
+      Aws::S3::Client.new(
+        region: @form.s3_bucket_region,
+        credentials: assume_role,
+      )
+    end
   end
 
   def assume_role

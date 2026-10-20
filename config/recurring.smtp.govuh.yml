@@ -1,0 +1,18 @@
+# GOV.UH Forms background schedule for the Google Workspace SMTP relay.
+# AWS SES SQS pollers are intentionally excluded: this deployment does not use SES.
+production:
+  delete_submissions_job:
+    class: DeleteSubmissionsJob
+    schedule: every hour
+  queue_metrics_job:
+    class: QueueMetricsJob
+    schedule: every minute
+  schedule_daily_batch_deliveries_job:
+    class: ScheduleDailyBatchDeliveriesJob
+    schedule: every day at 2am Europe/London
+  schedule_weekly_batch_deliveries_job:
+    class: ScheduleWeeklyBatchDeliveriesJob
+    schedule: every Monday at 2:15am Europe/London
+  schedule_bounce_notifications_job:
+    class: ScheduleBounceNotificationsJob
+    schedule: every day at 2:30am Europe/London

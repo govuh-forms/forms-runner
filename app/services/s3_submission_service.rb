@@ -11,7 +11,7 @@ class S3SubmissionService
     raise StandardError, "S3 bucket name is not set on the form" if @form.s3_bucket_name.nil?
     raise StandardError, "S3 bucket account ID is not set on the form" if !interior_garage_bucket? && @form.s3_bucket_aws_account_id.nil?
     if interior_garage_bucket?
-      raise StandardError, "Interior Garage delivery is not enabled for this form" unless [3, 4].include?(@form.id.to_i)
+      raise StandardError, "Interior Garage delivery is not enabled for this form" unless interior_garage_allowed_form?
       raise StandardError, "Interior Garage accepts native JSON submissions only" unless @delivery.formats == %w[json]
       raise StandardError, "Garage upload configuration is missing" unless interior_garage_enabled?
       raise StandardError, "Uploaded files require an approved evidence delivery route" if @journey.completed_file_upload_questions.any?
@@ -89,16 +89,28 @@ private
     CloudWatchService.record_submission_delivery_latency_metric(submission_duration_ms, "S3")
   end
 
-  INTERIOR_GARAGE_BUCKET = "uh-interior-citizenship-submissions"
+  INTERIOR_GARAGE_BUCKETS = {
+    "uh-interior-citizenship-submissions" => [3, 4, 9, 10, 11, 12],
+    "uh-interior-immigration-submissions" => [14, 16],
+  }.freeze
 
   def interior_garage_bucket?
-    @form.s3_bucket_name == INTERIOR_GARAGE_BUCKET
+    INTERIOR_GARAGE_BUCKETS.key?(@form.s3_bucket_name)
+  end
+
+  def interior_garage_allowed_form?
+    INTERIOR_GARAGE_BUCKETS.fetch(@form.s3_bucket_name, []).include?(@form.id.to_i)
+  end
+
+  def interior_garage_key_prefix
+    @form.s3_bucket_name == "uh-interior-immigration-submissions" ? "UH_INTERIOR_IMMIGRATION_GARAGE" : "UH_INTERIOR_GARAGE"
   end
 
   def interior_garage_enabled?
+    prefix = interior_garage_key_prefix
     ENV["UH_INTERIOR_GARAGE_ENDPOINT"].present? &&
-      ENV["UH_INTERIOR_GARAGE_ACCESS_KEY_ID"].present? &&
-      ENV["UH_INTERIOR_GARAGE_SECRET_ACCESS_KEY"].present?
+      ENV["#{prefix}_ACCESS_KEY_ID"].present? &&
+      ENV["#{prefix}_SECRET_ACCESS_KEY"].present?
   end
 
   def s3_client
@@ -109,8 +121,8 @@ private
         endpoint: ENV.fetch("UH_INTERIOR_GARAGE_ENDPOINT"),
         force_path_style: true,
         credentials: Aws::Credentials.new(
-          ENV.fetch("UH_INTERIOR_GARAGE_ACCESS_KEY_ID"),
-          ENV.fetch("UH_INTERIOR_GARAGE_SECRET_ACCESS_KEY"),
+          ENV.fetch("#{interior_garage_key_prefix}_ACCESS_KEY_ID"),
+          ENV.fetch("#{interior_garage_key_prefix}_SECRET_ACCESS_KEY"),
         ),
       )
     else

@@ -8,12 +8,13 @@ RSpec.describe S3SubmissionService do
 
   let(:form_document) do
     build(:form_document,
-          form_id: 42,
+          form_id: form_id,
           s3_bucket_name:,
           s3_bucket_aws_account_id:,
           s3_bucket_region:,
           available_languages:)
   end
+  let(:form_id) { 42 }
   let(:s3_bucket_name) { "a-bucket" }
   let(:s3_bucket_aws_account_id) { "23423423423423" }
   let(:s3_bucket_region) { "eu-west-1" }
@@ -242,6 +243,67 @@ RSpec.describe S3SubmissionService do
 
           service.submit
         end
+      end
+    end
+
+
+    context "when Form 1 uses the dedicated CMO Garage receiver" do
+      let(:form_id) { 1 }
+      let(:s3_bucket_name) { "uh-cmo-ministerial-eoi-submissions" }
+      let(:s3_bucket_aws_account_id) { nil }
+      let(:s3_bucket_region) { "garage" }
+      let(:delivery) { build(:delivery, formats: %w[json]) }
+      let(:mock_s3_client) { Aws::S3::Client.new(stub_responses: true) }
+
+      before do
+        allow(ENV).to receive(:[]).and_call_original
+        allow(ENV).to receive(:fetch).and_call_original
+        {
+          "UH_CMO_EOI_GARAGE_ENDPOINT" => "http://cmo-garage.internal",
+          "UH_CMO_EOI_GARAGE_ACCESS_KEY_ID" => "cmo-test-id",
+          "UH_CMO_EOI_GARAGE_SECRET_ACCESS_KEY" => "cmo-test-secret",
+        }.each do |name, value|
+          allow(ENV).to receive(:[]).with(name).and_return(value)
+          allow(ENV).to receive(:fetch).with(name).and_return(value)
+        end
+        allow(Aws::S3::Client).to receive(:new).and_return(mock_s3_client)
+        allow(CloudWatchService).to receive(:record_submission_delivery_latency_metric)
+      end
+
+      it "uses only the CMO credentials and stores JSON in the CMO bucket" do
+        expect(Aws::S3::Client).to receive(:new).with(
+          region: "garage",
+          endpoint: "http://cmo-garage.internal",
+          force_path_style: true,
+          credentials: an_instance_of(Aws::Credentials),
+        ).and_return(mock_s3_client)
+        expect(mock_s3_client).to receive(:put_object).with(
+          hash_including(
+            bucket: "uh-cmo-ministerial-eoi-submissions",
+            key: "form_submissions/1/#{expected_timestamp}_#{submission_reference}/form_submission.json",
+          ),
+        )
+        service.submit
+      end
+
+      it "rejects another form trying to use the restricted CMO bucket" do
+        allow(form_document).to receive(:form_id).and_return(3)
+        expect { service.submit }.to raise_error("Restricted Garage delivery is not enabled for this form")
+      end
+
+      it "rejects missing CMO credentials" do
+        allow(ENV).to receive(:[]).with("UH_CMO_EOI_GARAGE_SECRET_ACCESS_KEY").and_return(nil)
+        expect { service.submit }.to raise_error("Garage upload configuration is missing")
+      end
+
+      it "rejects CSV delivery to the restricted CMO receiver" do
+        allow(delivery).to receive(:formats).and_return(%w[csv])
+        expect { service.submit }.to raise_error("Restricted Garage accepts native JSON submissions only")
+      end
+
+      it "rejects file uploads without an approved evidence route" do
+        allow(journey).to receive(:completed_file_upload_questions).and_return([question])
+        expect { service.submit }.to raise_error("Uploaded files require an approved evidence delivery route")
       end
     end
 

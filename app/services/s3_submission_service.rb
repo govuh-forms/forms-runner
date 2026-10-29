@@ -9,11 +9,11 @@ class S3SubmissionService
 
   def submit
     raise StandardError, "S3 bucket name is not set on the form" if @form.s3_bucket_name.nil?
-    raise StandardError, "S3 bucket account ID is not set on the form" if !interior_garage_bucket? && @form.s3_bucket_aws_account_id.nil?
-    if interior_garage_bucket?
-      raise StandardError, "Interior Garage delivery is not enabled for this form" unless interior_garage_allowed_form?
-      raise StandardError, "Interior Garage accepts native JSON submissions only" unless @delivery.formats == %w[json]
-      raise StandardError, "Garage upload configuration is missing" unless interior_garage_enabled?
+    raise StandardError, "S3 bucket account ID is not set on the form" if !restricted_garage_bucket? && @form.s3_bucket_aws_account_id.nil?
+    if restricted_garage_bucket?
+      raise StandardError, "Restricted Garage delivery is not enabled for this form" unless restricted_garage_allowed_form?
+      raise StandardError, "Restricted Garage accepts native JSON submissions only" unless @delivery.formats == %w[json]
+      raise StandardError, "Garage upload configuration is missing" unless restricted_garage_enabled?
       raise StandardError, "Uploaded files require an approved evidence delivery route" if @journey.completed_file_upload_questions.any?
     end
     raise StandardError, "S3 bucket region is not set on the form" if @form.s3_bucket_region.nil?
@@ -81,7 +81,7 @@ private
 
   def upload_submission_to_s3(submission_content, key)
     params = { body: submission_content, bucket: @form.s3_bucket_name, key: key }
-    params[:expected_bucket_owner] = @form.s3_bucket_aws_account_id unless interior_garage_bucket?
+    params[:expected_bucket_owner] = @form.s3_bucket_aws_account_id unless restricted_garage_bucket?
     s3_client.put_object(params)
     Rails.logger.info("Uploaded submission to S3", { key: })
 
@@ -98,6 +98,22 @@ private
     INTERIOR_GARAGE_BUCKETS.key?(@form.s3_bucket_name)
   end
 
+  CMO_GARAGE_BUCKET = "uh-cmo-ministerial-eoi-submissions".freeze
+
+  def cmo_garage_bucket?
+    @form.s3_bucket_name == CMO_GARAGE_BUCKET
+  end
+
+  def restricted_garage_bucket?
+    interior_garage_bucket? || cmo_garage_bucket?
+  end
+
+  def restricted_garage_allowed_form?
+    return @form.id.to_i == 1 if cmo_garage_bucket?
+
+    interior_garage_allowed_form?
+  end
+
   def interior_garage_allowed_form?
     INTERIOR_GARAGE_BUCKETS.fetch(@form.s3_bucket_name, []).include?(@form.id.to_i)
   end
@@ -106,23 +122,32 @@ private
     @form.s3_bucket_name == "uh-interior-immigration-submissions" ? "UH_INTERIOR_IMMIGRATION_GARAGE" : "UH_INTERIOR_GARAGE"
   end
 
-  def interior_garage_enabled?
-    prefix = interior_garage_key_prefix
-    ENV["UH_INTERIOR_GARAGE_ENDPOINT"].present? &&
+  def restricted_garage_key_prefix
+    cmo_garage_bucket? ? "UH_CMO_EOI_GARAGE" : interior_garage_key_prefix
+  end
+
+  def restricted_garage_endpoint
+    ENV.fetch(cmo_garage_bucket? ? "UH_CMO_EOI_GARAGE_ENDPOINT" : "UH_INTERIOR_GARAGE_ENDPOINT")
+  end
+
+  def restricted_garage_enabled?
+    prefix = restricted_garage_key_prefix
+    endpoint_key = cmo_garage_bucket? ? "UH_CMO_EOI_GARAGE_ENDPOINT" : "UH_INTERIOR_GARAGE_ENDPOINT"
+    ENV[endpoint_key].present? &&
       ENV["#{prefix}_ACCESS_KEY_ID"].present? &&
       ENV["#{prefix}_SECRET_ACCESS_KEY"].present?
   end
 
   def s3_client
-    @s3_client ||= if interior_garage_bucket?
-      raise StandardError, "Interior Garage credentials are not configured" unless interior_garage_enabled?
+    @s3_client ||= if restricted_garage_bucket?
+      raise StandardError, "Restricted Garage credentials are not configured" unless restricted_garage_enabled?
       Aws::S3::Client.new(
         region: "garage",
-        endpoint: ENV.fetch("UH_INTERIOR_GARAGE_ENDPOINT"),
+        endpoint: restricted_garage_endpoint,
         force_path_style: true,
         credentials: Aws::Credentials.new(
-          ENV.fetch("#{interior_garage_key_prefix}_ACCESS_KEY_ID"),
-          ENV.fetch("#{interior_garage_key_prefix}_SECRET_ACCESS_KEY"),
+          ENV.fetch("#{restricted_garage_key_prefix}_ACCESS_KEY_ID"),
+          ENV.fetch("#{restricted_garage_key_prefix}_SECRET_ACCESS_KEY"),
         ),
       )
     else

@@ -1,6 +1,11 @@
 features:
   dummy: false
 
+uh_forms:
+  # The generic Forms privacy page remains unavailable pending approval.
+  # The existing Form 1 published notice has a separately verified exact route.
+  privacy_notice_approved: false
+
 
 forms_admin:
   # URL to form-admin

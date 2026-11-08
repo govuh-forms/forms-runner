@@ -252,6 +252,25 @@ RSpec.describe Submission, type: :model do
       end
     end
 
+    context "when a saved submission has no immediate delivery" do
+      it "returns false rather than treating an empty delivery list as sent" do
+        submission = create(:submission)
+        expect(described_class).not_to be_sent(submission.reference)
+      end
+
+      it "does not accept a daily delivery as evidence of immediate delivery" do
+        submission = create(:submission, deliveries: [create(:delivery, delivery_schedule: :daily)])
+        expect(described_class).not_to be_sent(submission.reference)
+      end
+    end
+
+    context "when the transport has reported failure" do
+      it "returns false even when an earlier transport reference exists" do
+        submission = create(:submission, deliveries: [create(:delivery, :failed)])
+        expect(described_class).not_to be_sent(submission.reference)
+      end
+    end
+
     context "when there are multiple deliveries for the submission" do
       it "returns false if any delivery is not sent" do
         submission = create(:submission, deliveries: [create(:delivery), create(:delivery, :not_sent)])

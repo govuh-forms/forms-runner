@@ -36,6 +36,22 @@ RSpec.describe SubmissionStatusController do
           expect(response).to have_http_status :not_found
         end
       end
+
+      context "when a saved submission has no immediate delivery" do
+        it "does not claim a successful handover" do
+          submission = create(:submission)
+          get :status, params: { reference: submission.reference }
+          expect(response).to have_http_status :not_found
+        end
+      end
+
+      context "when a submission has a transport reference but bounced" do
+        it "does not claim a successful handover" do
+          submission = create(:submission, deliveries: [create(:delivery, :failed)])
+          get :status, params: { reference: submission.reference }
+          expect(response).to have_http_status :not_found
+        end
+      end
     end
 
     context "when no authorization token is included in request" do

@@ -184,9 +184,27 @@ private
     ) do |job|
       next if job.successfully_enqueued?
 
-      message_suffix = ": #{job.enqueue_error&.message}" if job.enqueue_error
-      raise StandardError, "Failed to enqueue confirmation email for reference #{submission_reference}#{message_suffix}"
+      record_confirmation_enqueue_failure(job.enqueue_error)
     end
+  rescue StandardError => error
+    # The institutional submission has already been saved and its primary
+    # delivery queued. Returning a submission error here would invite the
+    # citizen to submit it again, potentially creating duplicate casework.
+    record_confirmation_enqueue_failure(error)
+  end
+
+  def record_confirmation_enqueue_failure(error)
+    details = {
+      submission_reference: submission_reference,
+      failure_reason: "confirmation_enqueue_failed",
+      error_class: error&.class&.name,
+    }
+    Rails.logger.error("Confirmation email could not be queued; institutional submission remains recorded", details)
+    Sentry.capture_message("GOV.UH Forms confirmation enqueue failed", extra: details)
+    CloudWatchService.record_job_failure_metric(SendConfirmationEmailJob.name)
+  rescue StandardError => logging_error
+    Rails.logger.error("Confirmation failure monitoring raised an error", error_class: logging_error.class.name,
+                                                                       submission_reference: submission_reference)
   end
 
   def requested_confirmation?

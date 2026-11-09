@@ -489,19 +489,38 @@ RSpec.describe FormSubmissionService, :capture_logging do
 
           before do
             allow(SendConfirmationEmailJob).to receive(:perform_later).and_yield(instance_double(SendConfirmationEmailJob, successfully_enqueued?: false, enqueue_error:))
+            allow(Sentry).to receive(:capture_message)
+            allow(CloudWatchService).to receive(:record_job_failure_metric)
           end
 
           context "and there is no enqueue error" do
-            it "raises an error" do
-              expect { service.submit }.to change(Submission, :count).by(1).and raise_error(StandardError, "Failed to enqueue confirmation email for reference #{reference}")
+            it "retains one institutional case and returns its reference instead of prompting a duplicate" do
+              expect { expect(service.submit).to eq(reference) }.to change(Submission, :count).by(1)
+              expect(Submission.last.deliveries.immediate).not_to be_empty
+              expect(Sentry).to have_received(:capture_message)
+                .with("GOV.UH Forms confirmation enqueue failed", extra: hash_including(submission_reference: reference,
+                                                                                          failure_reason: "confirmation_enqueue_failed"))
             end
           end
 
           context "and there is an enqueue error" do
             let(:enqueue_error) { ActiveJob::EnqueueError.new("An error occurred enqueueing job") }
 
-            it "raises an error" do
-              expect { service.submit }.to change(Submission, :count).by(1).and raise_error(StandardError, "Failed to enqueue confirmation email for reference #{reference}: An error occurred enqueueing job")
+            it "records a failed optional notice without losing the primary institutional submission" do
+              expect { expect(service.submit).to eq(reference) }.to change(Submission, :count).by(1)
+              expect(CloudWatchService).to have_received(:record_job_failure_metric).with("SendConfirmationEmailJob")
+            end
+          end
+
+          context "when the mail queue raises before yielding a job" do
+            before do
+              allow(SendConfirmationEmailJob).to receive(:perform_later).and_raise(ActiveJob::EnqueueError, "queue unavailable")
+            end
+
+            it "keeps the original reference and records the notice failure" do
+              expect { expect(service.submit).to eq(reference) }.to change(Submission, :count).by(1)
+              expect(Sentry).to have_received(:capture_message)
+                .with("GOV.UH Forms confirmation enqueue failed", extra: hash_including(submission_reference: reference))
             end
           end
         end

@@ -75,6 +75,19 @@ RSpec.describe Question::TextComponent::View, type: :component do
     end
   end
 
+  describe "when an existing draft has no answer settings" do
+    let(:form_document_step) { build :question_step, answer_type: "text" }
+    let(:question) do
+      build(:text, question_text: form_document_step.question_text,
+                   hint_text: form_document_step.hint_text, answer_settings: nil)
+    end
+    let(:mode) { Mode.new("preview-draft") }
+
+    it "renders the question as an editable textarea rather than an HTTP 500" do
+      expect(page).to have_css("textarea[name='form[text]']")
+    end
+  end
+
   describe "when component is multi-line answer" do
     let(:input_type) { "long_text" }
 

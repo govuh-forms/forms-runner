@@ -60,7 +60,15 @@ class Submission < ApplicationRecord
 
   def self.sent?(reference)
     submission = Submission.find_by(reference: reference)
-    submission&.deliveries&.immediate&.all? { |d| d.delivery_reference.present? }
+    return false unless submission
+
+    immediate_deliveries = submission.deliveries.immediate.to_a
+    return false if immediate_deliveries.empty?
+
+    # A missing delivery must not be treated as a successful submission.
+    # A transport reference is evidence of attempted dispatch, not proof that
+    # the owning institution received or read the submission.
+    immediate_deliveries.all? { |delivery| delivery.delivery_reference.present? && !delivery.failed? }
   end
 
   def mode_object

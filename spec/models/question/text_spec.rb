@@ -9,6 +9,23 @@ RSpec.describe Question::Text, type: :model do
 
   let(:question_text) { Faker::Lorem.question }
 
+  context "without text answer settings in an existing unpublished form" do
+    let(:options) { { is_optional:, answer_settings: nil, question_text: } }
+
+    it "can identify a long text question without raising an exception" do
+      expect(question.is_single_line?).to be false
+      expect(question.has_long_answer?).to be true
+    end
+  end
+
+  context "with answer settings from a JSON hash" do
+    let(:options) { { is_optional:, answer_settings: { "input_type" => "single_line" }, question_text: } }
+
+    it "retains the intended single line behaviour" do
+      expect(question.is_single_line?).to be true
+    end
+  end
+
   context "with input type set to single_line" do
     let(:input_type) { "single_line" }
 

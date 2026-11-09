@@ -8,7 +8,15 @@ module Question
     before_validation :strip_carriage_returns!, unless: :is_single_line?
 
     def is_single_line?
-      answer_settings.input_type == "single_line"
+      # Some existing unpublished forms have no text answer settings. Treat
+      # an unspecified type as long text rather than failing their preview.
+      input_type = if answer_settings.respond_to?(:input_type)
+                     answer_settings.input_type
+                   elsif answer_settings.is_a?(Hash)
+                     answer_settings["input_type"] || answer_settings[:input_type]
+                   end
+
+      input_type == "single_line"
     end
 
     def has_long_answer?

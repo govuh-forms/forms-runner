@@ -142,5 +142,53 @@ RSpec.describe SendSubmissionJob, type: :job do
       expect(mail.body.parts[0].decoded).to include(I18n.t("page.none_of_the_above", locale: :en))
     end
   end
+  context "when the selected institution uses the Google Workspace SMTP relay" do
+    before do
+      allow(SubmissionService).to receive(:new).with(submission:, delivery:).and_return(aws_ses_submission_service_spy)
+    end
+
+    it "records SMTP acceptance without claiming recipient delivery" do
+      allow(FormSubmissionMailer).to receive(:delivery_method).and_return(:smtp)
+      allow(aws_ses_submission_service_spy).to receive(:submit).and_return(delivery_reference)
+
+      described_class.new.perform(delivery)
+
+      expect(delivery.reload.delivery_reference).to eq(delivery_reference)
+      expect(delivery.smtp_accepted_at).to be_present
+      expect(delivery.delivered_at).to be_nil
+    end
+
+    it "does not record SMTP acceptance for the original SES transport" do
+      allow(FormSubmissionMailer).to receive(:delivery_method).and_return(:aws_ses)
+      allow(aws_ses_submission_service_spy).to receive(:submit).and_return(delivery_reference)
+
+      described_class.new.perform(delivery)
+
+      expect(delivery.reload.smtp_accepted_at).to be_nil
+      expect(delivery.delivery_reference).to eq(delivery_reference)
+    end
+
+    it "never records transport acceptance when the SMTP send fails" do
+      allow(FormSubmissionMailer).to receive(:delivery_method).and_return(:smtp)
+      allow(aws_ses_submission_service_spy).to receive(:submit).and_raise(StandardError, "relay unavailable")
+
+      expect { described_class.new.perform(delivery) }.to raise_error(StandardError, "relay unavailable")
+
+      expect(delivery.reload.smtp_accepted_at).to be_nil
+      expect(delivery.delivered_at).to be_nil
+    end
+
+    it "clears an earlier acceptance on a failed new attempt" do
+      allow(FormSubmissionMailer).to receive(:delivery_method).and_return(:smtp)
+      delivery.update!(smtp_accepted_at: 2.days.ago, delivery_reference: "previous")
+      allow(aws_ses_submission_service_spy).to receive(:submit).and_raise(StandardError, "relay unavailable")
+
+      expect { described_class.new.perform(delivery) }.to raise_error(StandardError, "relay unavailable")
+
+      expect(delivery.reload.smtp_accepted_at).to be_nil
+      expect(delivery.delivery_reference).to eq("previous")
+    end
+  end
+
 end
 # rubocop:enable RSpec/InstanceVariable

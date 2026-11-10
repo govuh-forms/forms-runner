@@ -18,7 +18,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_151000) do
     t.datetime "batch_begin_at"
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
-    t.datetime "smtp_accepted_at"
     t.string "delivery_method"
     t.string "delivery_reference"
     t.string "delivery_schedule", default: "immediate", null: false, comment: "Either 'immediate' if the delivery is for a single submission or a value representing the schedule for sending multiple submissions."
@@ -28,6 +27,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_151000) do
     t.string "formats", array: true
     t.datetime "last_attempt_at"
     t.datetime "updated_at", null: false
+    t.datetime "smtp_accepted_at"
     t.index ["delivery_reference"], name: "index_deliveries_on_delivery_reference"
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_07_122013) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_10_151000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_07_122013) do
     t.datetime "batch_begin_at"
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
+    t.datetime "smtp_accepted_at"
     t.string "delivery_method"
     t.string "delivery_reference"
     t.string "delivery_schedule", default: "immediate", null: false, comment: "Either 'immediate' if the delivery is for a single submission or a value representing the schedule for sending multiple submissions."

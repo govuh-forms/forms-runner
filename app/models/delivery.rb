@@ -40,6 +40,7 @@ class Delivery < ApplicationRecord
     update!(
       last_attempt_at: Time.zone.now,
       delivered_at: nil,
+      smtp_accepted_at: nil,
       failed_at: nil,
       failure_reason: nil,
       failure_details: nil,

@@ -15,7 +15,10 @@ class SendSubmissionJob < SubmissionDeliveryJob
 
       message_id = SubmissionService.new(submission:, delivery:).submit
 
-      delivery.update!(delivery_reference: message_id)
+      # A successful Google Workspace SMTP hand-off proves transport acceptance
+      # only. Actual mailbox delivery remains a separately evidenced event.
+      smtp_accepted_at = Time.current if FormSubmissionMailer.delivery_method.to_sym == :smtp
+      delivery.update!(delivery_reference: message_id, smtp_accepted_at:)
       record_submission_sent!
     end
   rescue StandardError

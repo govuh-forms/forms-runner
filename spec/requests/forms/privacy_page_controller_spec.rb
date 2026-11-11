@@ -64,7 +64,7 @@ RSpec.describe Forms::PrivacyPageController, type: :request do
 
       context "when Form 1 has the exact published ministerial EOI privacy notice" do
         let(:form_id) { 1 }
-        let(:privacy_policy_url) { Forms::PrivacyPageController::MINISTERIAL_EOI_PRIVACY_NOTICE }
+        let(:privacy_policy_url) { Forms::PrivacyPageController::APPROVED_EXISTING_FORM_PRIVACY_NOTICES.fetch(1) }
 
         it "redirects to that notice without lifting the generic gate" do
           expect(response).to have_http_status(:see_other)
@@ -72,8 +72,45 @@ RSpec.describe Forms::PrivacyPageController, type: :request do
         end
       end
 
+      context "when another existing form uses its exact published notice" do
+        {
+          17 => "https://www.gov.uhrblx.com/help/privacy-notice",
+          18 => "https://www.gov.uhrblx.com/government/organisations/cabinet-office/about/personal-information-charter",
+          19 => "https://www.gov.uhrblx.com/government/organisations/cabinet-office/about/personal-information-charter",
+          20 => "https://www.gov.uhrblx.com/government/organisations/cabinet-office/about/personal-information-charter",
+        }.each do |id, notice|
+          context "form #{id}" do
+            let(:form_id) { id }
+            let(:privacy_policy_url) { notice }
+
+            it "redirects to the approved exact notice without lifting the generic gate" do
+              expect(response).to have_http_status(:see_other)
+              expect(response).to redirect_to(notice)
+            end
+          end
+        end
+      end
+
+      context "when another form copies a permitted notice" do
+        let(:form_id) { 3 }
+        let(:privacy_policy_url) { "https://www.gov.uhrblx.com/help/privacy-notice" }
+
+        it "stays unavailable because the form is not allowlisted" do
+          expect(response).to have_http_status(:service_unavailable)
+        end
+      end
+
+      context "when an allowlisted form has an altered notice" do
+        let(:form_id) { 17 }
+        let(:privacy_policy_url) { "https://www.gov.uhrblx.com.example.net/help/privacy-notice" }
+
+        it "does not redirect to the substituted destination" do
+          expect(response).to have_http_status(:service_unavailable)
+        end
+      end
+
       context "when another form tries to reuse the ministerial notice" do
-        let(:privacy_policy_url) { Forms::PrivacyPageController::MINISTERIAL_EOI_PRIVACY_NOTICE }
+        let(:privacy_policy_url) { Forms::PrivacyPageController::APPROVED_EXISTING_FORM_PRIVACY_NOTICES.fetch(1) }
 
         it "does not grant access" do
           expect(response).to have_http_status(:service_unavailable)

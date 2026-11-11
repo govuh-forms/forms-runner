@@ -15,16 +15,16 @@ Rails.application.routes.draw do
   get "/help/accessibility-statement" => "application#accessibility_statement", as: :accessibility_statement
   get "/help/cookies" => "application#cookies", as: :cookies
 
-  get "/security.txt" => redirect("https://vulnerability-reporting.service.security.gov.uk/.well-known/security.txt")
+  get "/security.txt" => "errors#not_found"
   get "/submission" => "submission_status#status", as: :status
-  get "/.well-known/security.txt" => redirect("https://vulnerability-reporting.service.security.gov.uk/.well-known/security.txt")
+  get "/.well-known/security.txt" => "errors#not_found"
 
   get "/govuk-one-login-jwks", to: "one_login_jwks#show", as: :one_login_jwks
 
   form_id_constraints = { form_id: UrlPatterns::FORM_ID_REGEX }
   form_constraints = {
     **form_id_constraints,
-    locale: /(en|cy)/,
+    locale: /en/,
     form_slug: UrlPatterns::FORM_SLUG_REGEX,
   }
 

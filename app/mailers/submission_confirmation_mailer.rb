@@ -14,9 +14,6 @@ class SubmissionConfirmationMailer < ApplicationMailer
     mail(
       to: confirmation_email_address,
       subject: subject,
-      delivery_method_options: {
-        configuration_set_name: Settings.aws.ses_confirmation_email_configuration_set_name,
-      },
     )
   end
 

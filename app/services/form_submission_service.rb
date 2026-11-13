@@ -29,6 +29,15 @@ class FormSubmissionService
     submission = create_submission_record
     enqueue_deliveries(submission)
 
+    if mode.live?
+      begin
+        FormMetricEvent.record_submission(submission:)
+      rescue StandardError => e
+        Rails.logger.warn("Failed recording Forms submission usage event: #{e.class.name}")
+        Sentry.capture_exception(e)
+      end
+    end
+
     Metrics.record_submission(form_id: form.id, form_name: form.name, mode:)
 
     LogEventService.log_submit(

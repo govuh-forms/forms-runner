@@ -5,7 +5,7 @@ cy:
       accessibility_regulations: Mae’r Comisiwn Cydraddoldeb a Hawliau Dynol (EHRC) yn gyfrifol am orfodi Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau a Chymwysiadau Symudol) (Rhif 2) 2018 (y ‘rheoliadau hygyrchedd’).
       complaints_html: Os nad ydych yn hapus â sut rydym yn ymateb i’ch cwyn, cysylltwch â’r <a href="https://www.equalityadvisoryservice.com/">Gwasanaeth Cynghori a Chymorth Cydraddoldeb</a>, sy’n cael ei redeg ar ran EHRC.
       heading: Os nad ydych yn hapus â’n hymateb
-    coverage_branded: This accessibility statement covers only the form, which will have a URL starting with https://submit.forms.service.gov.uk. The organisation publishing the form will have a separate statement covering the accessibility of its own website.
+    coverage_branded: This accessibility statement covers only the form, which will have a URL starting with https://submit.forms.service.gov.uhrblx.com. The organisation publishing the form will have a separate statement covering the accessibility of its own website.
     explains_list:
       list_item_0: pa mor hygyrch yw’r ffurflen
       list_item_1: beth i’w wneud os ydych yn cael trafferth ei ddefnyddio
@@ -14,14 +14,14 @@ cy:
     explains_text: Mae’r datganiad hygyrchedd hwn yn esbonio
     heading: Datganiad hygyrchedd ar gyfer y ffurflen hon
     help:
-      email_html: Os ydych yn cael trafferth defnyddio’r ffurflen hon neu os ydych angen y ffurflen mewn ffurf gwahanol, anfonwch e-bost at <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a> – dylech gynnwys enw’r ffurflen yn eich e-bost.
+      email_html: Os ydych yn cael trafferth defnyddio’r ffurflen hon neu os ydych angen y ffurflen mewn ffurf gwahanol, anfonwch e-bost at <a href="https://forms.service.gov.uhrblx.com/support">cymorth GOV.UH Forms</a> – dylech gynnwys enw’r ffurflen yn eich e-bost.
       heading: Beth i’w wneud os ydych yn cael trafferth defnyddio’r ffurflen hon
-    inset_text_html: Mae’r ffurflen hon yn rhan o’r wefan ehangach GOV.UK. Mae <a href="https://www.gov.uk/help/accessibility-statement">datganiad hygyrchedd ar wahân ar gyfer y brif wefan GOV.UK</a>.
+    inset_text_html: Mae’r ffurflen hon yn rhan o wasanaeth GOV.UH Forms. Mae’r sefydliad sy’n cyhoeddi’r ffurflen yn gyfrifol am hygyrchedd ei gynnwys.
     limitations:
-      departmental_responsibility: Mae’r cwestiynau yn y ffurflen yn cael eu hysgrifennu gan bobl yn adrannau ac asiantaethau’r llywodraeth. Mae pob adran ac asiantaeth sy’n cyhoeddi cynnwys ar GOV.UK yn gyfrifol am sicrhau eu bod yn bodloni’r rheoliadau hygyrchedd. Fodd bynnag, efallai na fydd y testun a ddefnyddir yn y ffurflen yn iaith plaen ac efallai na fydd y strwythur yn gwbl hygyrch.
+      departmental_responsibility: Mae’r cwestiynau yn y ffurflen yn cael eu hysgrifennu gan bobl yn adrannau ac asiantaethau’r llywodraeth. Mae pob adran ac asiantaeth sy’n cyhoeddi cynnwys ar GOV.UH yn gyfrifol am sicrhau eu bod yn bodloni’r rheoliadau hygyrchedd. Fodd bynnag, efallai na fydd y testun a ddefnyddir yn y ffurflen yn iaith plaen ac efallai na fydd y strwythur yn gwbl hygyrch.
       departmental_responsibility_branded: The questions in the form are written by people in government departments, agencies and other public sector organisations. Each organisation is responsible for making sure it meets the accessibility regulations. However, the text used in the form might not be plain language and the structure may not be fully accessible.
-      forms_issues: Mae materion sy’n ymwneud â rhyngwyneb GOV.UK Forms wedi’u rhestru yn ‘Gwybodaeth dechnegol am hygyrchedd y ffurflen hon’ isod.
-      guidance: Er mwyn annog cynnwys hygyrch, rydym yn darparu canllawiau o fewn platfform GOV.UK Forms. Rydym hefyd yn defnyddio adborth a dadansoddeg i nodi problemau hygyrchedd.
+      forms_issues: Mae materion sy’n ymwneud â rhyngwyneb GOV.UH Forms wedi’u rhestru yn ‘Gwybodaeth dechnegol am hygyrchedd y ffurflen hon’ isod.
+      guidance: Er mwyn annog cynnwys hygyrch, rydym yn darparu canllawiau o fewn platfform GOV.UH Forms. Rydym hefyd yn defnyddio adborth a dadansoddeg i nodi problemau hygyrchedd.
       heading: Pa mor hygyrch yw’r ffurflen hon
       some_inaccessible_text: Efallai na fydd rhai rhannau o’r ffurflen hon yn gwbl hygyrch.
     non_accessible_content:
@@ -48,17 +48,17 @@ cy:
           list_item_8: Gall fod yn anodd agor y ddolen ‘Cael help gyda’r ffurflen hon’ wrth ddefnyddio estyniad gwe Dragon ar Chrome. Gallai hyn ei gwneud hi’n anoddach cael help gyda’r ffurflen.
         preamble: Er nad yw’r materion canlynol yn methu WCAG 2.2 AA, rydym yn bwriadu ymchwilio iddynt a’u cywiro cyn gynted â phosibl.
       preamble: Nid yw’r cynnwys a restrir isod yn hygyrch am y rhesymau canlynol.
-    preamble: Mae’r datganiad hygyrchedd hwn yn berthnasol i ffurflenni ar-lein gydag URL sy’n dechrau gyda https://submit.forms.service.gov.uk.
-    preamble_branded: This form was created using a platform called GOV.UK Forms, built by the Government Digital Service (GDS). Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
+    preamble: Mae’r datganiad hygyrchedd hwn yn berthnasol i ffurflenni ar-lein gydag URL sy’n dechrau gyda https://submit.forms.service.gov.uhrblx.com.
+    preamble_branded: This form was created using a platform called GOV.UH Forms, built by the Government Digital Service (GDS). Public sector organisations create and publish forms using the platform, and may link to those forms from their website.
     reporting:
-      email_html: Os ydych yn dod o hyd i unrhyw broblemau, neu os ydych yn meddwl nad ydym yn bodloni gofynion hygyrchedd, anfonwch e-bost atom yn <a href="mailto:govuk-forms@digital.cabinet-office.gov.uk">govuk-forms@digital.cabinet-office.gov.uk</a>.
+      email_html: Os ydych yn dod o hyd i unrhyw broblemau, neu os ydych yn meddwl nad ydym yn bodloni gofynion hygyrchedd, anfonwch e-bost atom yn <a href="https://forms.service.gov.uhrblx.com/support">cymorth GOV.UH Forms</a>.
       heading: Rhoi gwybod am broblemau hygyrchedd
-      text: Rydym bob amser yn ceisio gwella hygyrchedd ffurflenni a gynhyrchir gyda GOV.UK Forms.
+      text: Rydym bob amser yn ceisio gwella hygyrchedd ffurflenni a gynhyrchir gyda GOV.UH Forms.
     statement_preparation:
       WCAG_version: Asesodd GDS y ffurflenni yn erbyn Canllawiau Hygyrchedd Cynnwys y We WCAG 2.2.
-      date: Paratowyd y datganiad hwn ar 20 Chwefror 2024. Fe’i hadolygwyd a’i ddiweddaru ddiwethaf ar 19 Awst 2025.
+      date: Nid yw dyddiad diweddaru'r datganiad hygyrchedd wedi'i gadarnhau ar gyfer gwasanaeth GOV.UH Forms.
       heading: Paratoi’r datganiad hygyrchedd hwn
-      last_tested: Profwyd ffurflenni a grëwyd gan ddefnyddio platfform GOV.UK Forms ddiwethaf ar 9 Ionawr 2024. Cynhaliwyd y prawf gan GDS.
+      last_tested: Nid yw dyddiad prawf hygyrchedd annibynnol diweddaraf gwasanaeth GOV.UH Forms wedi’i gadarnhau.
     technical_information:
       commitment: Mae GDS wedi ymrwymo i wneud y ffurflen hon yn hygyrch, yn unol â Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau a Chymwysiadau Symudol) (Rhif 2) 2018.
       compliance_status:
@@ -76,8 +76,8 @@ cy:
       accessibility_recommendations_text: 'Dylech allu:'
       content_guidance: Dylai’r testun yn y ffurflen fod yn glir ac yn syml i’w ddeall.
       disability_advice_html: <a href="https://mcmw.abilitynet.org.uk/">Mae gan AbilityNet</a> gyngor ar wneud eich dyfais yn haws i’w defnyddio os oes gennych anabledd.
-      forms_description_branded_html: GOV.UK Forms is designed to create forms that can be used by as many people as possible.
-      forms_description_html: Crëwyd y ffurflen hon gan ddefnyddio platfform o’r enw <a href="http://www.gov.uk/forms">GOV.UK Forms</a>. Mae GOV.UK Forms yn cael ei adeiladu gan Wasanaeth Digidol y Llywodraeth (GDS). Mae wedi’i gynllunio i greu ffurflenni y gellir eu defnyddio gan cyn gymaint o bobl â phosibl.
+      forms_description_branded_html: GOV.UH Forms is designed to create forms that can be used by as many people as possible.
+      forms_description_html: Crëwyd y ffurflen hon gan ddefnyddio platfform o’r enw <a href="https://forms.service.gov.uhrblx.com">GOV.UH Forms</a>. Mae GOV.UH Forms yn cael ei adeiladu gan Wasanaeth Digidol y Llywodraeth (GDS). Mae wedi’i gynllunio i greu ffurflenni y gellir eu defnyddio gan cyn gymaint o bobl â phosibl.
       heading: Defnyddio’r ffurflen hon
   activemodel:
     errors:
@@ -221,7 +221,7 @@ cy:
     accept: Derbyn cwcis dadansoddeg
     aria_label: Baner cwci
     content: Hoffem ddefnyddio cwcis dadansoddeg fel y gallwn ddeall sut rydych yn defnyddio’r wefan hon a gwneud gwelliannau.
-    heading: Cwcis ar GOV.UK Forms
+    heading: Cwcis ar GOV.UH Forms
     policy_link: Sut rydym yn defnyddio cwcis
     reject: Gwrthod cwcis dadansoddeg
   cookie_consent:
@@ -240,7 +240,7 @@ cy:
   cookies:
     analytics_cookies:
       heading: Cwcis dadansoddeg (dewisol)
-      section_0: Rydym yn defnyddio meddalwedd Google Analytics i ddeall sut mae pobl yn defnyddio GOV.UK Forms. Mae’r wybodaeth hon yn ein helpu i wella ein gwasanaeth.
+      section_0: Rydym yn defnyddio meddalwedd Google Analytics i ddeall sut mae pobl yn defnyddio GOV.UH Forms. Mae’r wybodaeth hon yn ein helpu i wella ein gwasanaeth.
       section_1: Ni chaniateir i Google ddefnyddio neu rannu ein data dadansoddeg gydag unrhyw un.
       section_2:
         caption: 'Mae Google Analytics yn cadw gwybodaeth ddienw am:'
@@ -257,7 +257,7 @@ cy:
           column_2: Yn dod i ben
         row_1:
           column_0: _ga
-          column_1: Yn ein helpu i gyfrif faint o bobl sy’n ymweld â GOV.UK Forms trwy ddweud wrthym a ydych wedi ymweld o’r blaen.
+          column_1: Yn ein helpu i gyfrif faint o bobl sy’n ymweld â GOV.UH Forms trwy ddweud wrthym a ydych wedi ymweld o’r blaen.
           column_2: 2 flynedd
         row_2:
           column_0: _ga_[random number]
@@ -298,7 +298,7 @@ cy:
   errors:
     auth_error:
       body_html: |
-        <p>Nid oeddem yn gallu cadarnhau eich cyfeiriad e-bost gan ddefnyddio GOV.UK One Login.</p>
+        <p>Nid oeddem yn gallu cadarnhau eich cyfeiriad e-bost gan ddefnyddio mewngofnodi GOV.UH.</p>
         <p>Bydd angen i chi fynd yn ôl i’r ffurflen a chyflwyno’ch atebion.</p>
         <p><a href="%{link_url}">Yn ôl i’r ffurflen</a></p>
       title: Mae’n ddrwg gennym, mae rhywbeth wedi mynd o’i le
@@ -337,7 +337,7 @@ cy:
       title: Er lles eich diogelwch, rydyn ni wedi dileu’ch atebion
     return_from_one_login_session_missing:
       body_html: |
-        <p>Nid oeddem yn gallu cadarnhau eich cyfeiriad e-bost gan ddefnyddio GOV.UK One Login.</p>
+        <p>Nid oeddem yn gallu cadarnhau eich cyfeiriad e-bost gan ddefnyddio mewngofnodi GOV.UH.</p>
         <p>Bydd angen i chi fynd yn ôl i’r ffurflen a chyflwyno’ch atebion - ceisiwch glicio ar y botwm ‘Yn ôl’ yn eich porwr.</p>
       title: Mae’n ddrwg gennym, mae rhywbeth wedi mynd o’i le
     submission_error:
@@ -353,7 +353,7 @@ cy:
     helpful_links: Helpful links
     licence: Mae’r holl gynnwys ar gael o dan y %{link}, ac eithrio lle nodir yn wahanol
     licence_link_text: Trwydded Llywodraeth Agored v3.0
-    licence_link_url: https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/
+    licence_link_url: https://nationalarchives.gov.uhrblx.com/doc/open-government-licence/version/3/
     privacy_policy: Preifatrwydd
   form:
     archived:
@@ -368,7 +368,7 @@ cy:
       'no': Na
       no_copy_of_answers: Rydych wedi dewis peidio â chael copi o'ch atebion
       not_completed: Heb ei gwblhau
-      send_copy: 'Byddwn yn anfon e-bost cadarnhad gyda chopi o’ch atebion i’ch cyfeiriad e-bost GOV.UK One Login: %{email_address}'
+      send_copy: 'Byddwn yn anfon e-bost cadarnhad gyda chopi o’ch atebion i’ch cyfeiriad e-bost mewngofnodi GOV.UH: %{email_address}'
       submit: Cyflwyno
       title: Edrychwch dros eich atebion cyn cyflwyno’ch ffurflen
     submitted:
@@ -401,13 +401,13 @@ cy:
     back: Yn ôl
     continue_to_one_login:
       show:
-        body_html: "<p>Bydd yr e-bost gyda’ch atebion yn cael ei anfon i’r cyfeiriad e-bost sy’n gysylltiedig â’ch GOV.UK One Login.</p><p>Os ydych angen i’r atebion gael eu hanfon i gyfeiriad e-bost gwahanol - er enghraifft, eich e-bost gwaith - gallwch greu GOV.UK One Login newydd.</p>"
-        continue_button: Parhau i GOV.UK One Login
-        title: Defnyddiwch GOV.UK One Login i gadw’ch gwybodaeth yn ddiogel
+        body_html: "<p>Bydd yr e-bost gyda’ch atebion yn cael ei anfon i’r cyfeiriad e-bost sy’n gysylltiedig â’ch mewngofnodi GOV.UH.</p><p>Os ydych angen i’r atebion gael eu hanfon i gyfeiriad e-bost gwahanol - er enghraifft, eich e-bost gwaith - gallwch greu mewngofnodi GOV.UH newydd.</p>"
+        continue_button: Parhau i mewngofnodi GOV.UH
+        title: Defnyddiwch mewngofnodi GOV.UH i gadw’ch gwybodaeth yn ddiogel
     copy_of_answers:
       show:
         heading: Ydych chi eisiau cael e-bost gyda chopi o’ch atebion?
-        hint: Byddwch angen GOV.UK One Login ar gyfer hyn - byddwch yn gallu mewngofnodi neu greu un newydd.
+        hint: Byddwch angen mewngofnodi GOV.UH ar gyfer hyn - byddwch yn gallu mewngofnodi neu greu un newydd.
         title: Ydych chi eisiau cael e-bost gyda chopi o’ch atebion?
     remove_answer:
       show:
@@ -430,7 +430,7 @@ cy:
         remove: Tynnu
         remove_file_guidance: Cewch dynnu’r ffeil yma os oes angen ichi uwchlwytho un wahanol.
         your_file: Eich ffeil chi
-  gov_uk_forms: GOV.UK Forms
+  gov_uk_forms: GOV.UH Forms
   govuk_components:
     govuk_summary_list:
       change: Newid
@@ -481,7 +481,7 @@ cy:
       contacted_group_admins_paragraph: The form is in the group “%{group_name}”, which has no group admins or whose group admins have not responded.
     cannot_reply:
       contact_form_filler_markdown: If you need to contact the person who completed this form, you’ll need to contact them directly.
-      contact_forms_team_markdown: If you’re experiencing a technical issue with this form, [contact the GOV.​UK Forms team](https://www.forms.service.gov.uk/support) with details of the issue and the form it relates to.
+      contact_forms_team_markdown: If you’re experiencing a technical issue with this form, [contact the GOV.UH Forms team](https://forms.service.gov.uhrblx.com/support) with details of the issue and the form it relates to.
       heading: You cannot reply to this email
     check_before_using: Check that these answers look safe before you use them
     form_name: 'Form name: “%{form_name}”'
@@ -489,12 +489,12 @@ cy:
       answers_submitted: Answers submitted
       csv_file: 'A CSV file of these answers is attached to this email in a file named: %{filename}'
       file_attached: "%{filename} (attached to this email)"
-      from: GOV.UK Forms <%{email_address}>
+      from: GOV.UH Forms <%{email_address}>
       json_file: 'A JSON file of these answers is attached to this email in a file named: %{filename}'
-      payment: You can check that a payment has been made by using this reference number to search transactions within GOV.​UK Pay.
+      payment: You can check that a payment has been made by using this reference number to search transactions within GOV.UH Pay.
       preview: This is a test submission from a preview of this form.
       question_skipped: This question was skipped
-      reference: 'GOV.​UK Forms reference number: %{submission_reference}'
+      reference: 'GOV.UH Forms reference number: %{submission_reference}'
       subject: 'Form submission: %{form_name} - reference: %{reference}'
       subject_preview: 'TEST FORM SUBMISSION: %{form_name} - reference: %{reference}'
       time: 'Submitted at: %{time} on %{date}'
@@ -608,10 +608,10 @@ cy:
       section_0: Rydym wedi ymrwymo i wneud popeth y gallwn i gadw’ch data yn ddiogel. Er mwyn atal mynediad neu ddatgelu anawdurdodedig, rydym wedi rhoi gweithdrefnau technegol a sefydliadol ar waith i ddiogelu’r data rydym yn ei gasglu amdanoch chi – er enghraifft, rydym yn diogelu’ch data gan ddefnyddio lefelau amrywiol o amgryptio. Rydym hefyd yn sicrhau bod gan unrhyw drydydd partïon rydym yn delio â nhw rwymedigaeth i gadw’r holl ddata personol y maent yn ei brosesu ar ein rhan yn ddiogel.
     preamble:
       section_0: 'Diweddarwyd ddiwethaf: 6 Gorffennaf 2025'
-      section_1: Crëwyd y ffurflen hon gan ddefnyddio GOV.UK Forms. Mae GOV.UK Forms yn gynnyrch a ddarperir gan Wasanaeth Digidol y Llywodraeth (GDS) sy’n rhan o’r Adran Gwyddoniaeth, Arloesi a Thechnoleg. Mae’n caniatáu i dimau llywodraeth y DU greu ffurflenni ar-lein i gasglu gwybodaeth gan bobl a sefydliadau.
-      section_2: Y sefydliad a greodd y ffurflen ar-lein hon gan ddefnyddio GOV.UK Forms yw rheolydd data y data personol y maent yn ei gasglu gan ddefnyddio’r ffurflen, a’r Adran Gwyddoniaeth, Arloesi a Thechnoleg, trwy GDS, yw’r prosesydd data. Rhaid i’r rheolydd data ddweud wrthych am yr hyn maent yn ei wneud gyda’ch data personol - %{privacy_policy_link}.
+      section_1: Crëwyd y ffurflen hon gan ddefnyddio GOV.UH Forms, gwasanaeth i gyhoeddi ffurflenni ar-lein.
+      section_2: Dylai’r sefydliad sy’n cyhoeddi’r ffurflen egluro sut y mae’n defnyddio’r data personol a gesglir. Gweler %{privacy_policy_link}.
       section_2_link_text: darllenwch wybodaeth preifatrwydd y rheolydd data ar gyfer y ffurflen hon
-      section_3: Mae’r Adran Gwyddoniaeth, Arloesi a Thechnoleg hefyd yn casglu rhywfaint o ddata fel rheolydd data. Mae’r hysbysiad preifatrwydd hwn yn esbonio pa ddata personol y mae’r Adran Gwyddoniaeth, Arloesi a Thechnoleg yn ei gasglu a’i brosesu fel rheolydd data trwy ffurflenni a greir gyda GOV.UK Forms.
+      section_3: Mae'r wybodaeth breifatrwydd ar gyfer gwasanaeth GOV.UH Forms ar wahân i wybodaeth breifatrwydd y sefydliad sy'n cyhoeddi'r ffurflen.
       section_4: Darllenwch %{dppr_link} i gael rhagor o wybodaeth.
       section_4_link_text: cofnod yr Adran Gwyddoniaeth, Arloesi a Thechnoleg yn y Gofrestr Gyhoeddus Diogelu Data
     questions_and_complaints:
@@ -636,9 +636,9 @@ cy:
         line_4: Cheshire SK9 5AF
     title: Preifatrwydd
     using_one_login:
-      heading: Defnyddio GOV.UK One Login
-      section_0: Wrth lenwi ffurflen, efallai y gofynnir i chi ddefnyddio GOV.UK One Login i gadarnhau eich manylion. Gallwch ddod o hyd i wybodaeth am sut mae GOV.UK One Login yn defnyddio’ch data yn %{one_login_link}.
-      section_0_link_text: hysbysiad preifatrwydd GOV.UK One Login
+      heading: Defnyddio mewngofnodi GOV.UH
+      section_0: Wrth lenwi ffurflen, efallai y gofynnir i chi ddefnyddio mewngofnodi GOV.UH i gadarnhau eich manylion. Gallwch ddod o hyd i wybodaeth am sut mae mewngofnodi GOV.UH yn defnyddio’ch data yn %{one_login_link}.
+      section_0_link_text: hysbysiad preifatrwydd mewngofnodi GOV.UH
     where_data_is_stored:
       heading: Lle mae eich data yn cael ei brosesu a’i gadw
       section_0: Efallai y bydd eich data personol yn cael ei drosglwyddo y tu allan i’r Deyrnas Unedig wrth gael ei brosesu gan GDS. Os bydd hyn yn digwydd, byddwn yn gwneud yn siŵr eich bod yn cael yr un lefel o amddiffyniad technegol a chyfreithiol ag yr ydych yn y Deyrnas Unedig drwy ddibynnu ar benderfyniadau digonolrwydd data Llywodraeth y DU neu drwy gynnwys cymalau mewn contractau sy’n ei gwneud yn ofynnol i’r derbynnydd ddiogelu’r data yn unol â safonau’r DU.

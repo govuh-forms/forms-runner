@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_07_122013) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_13_203000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,6 +28,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_07_122013) do
     t.datetime "last_attempt_at"
     t.datetime "updated_at", null: false
     t.index ["delivery_reference"], name: "index_deliveries_on_delivery_reference"
+  end
+
+  create_table "form_metric_events", force: :cascade do |t|
+    t.integer "form_id", null: false
+    t.string "event_type", null: false
+    t.datetime "occurred_at", null: false
+    t.bigint "submission_id"
+    t.index ["form_id", "occurred_at", "event_type"], name: "form_metric_events_form_date_type"
+    t.index ["submission_id"], name: "index_form_metric_events_on_submission_id", unique: true
+    t.check_constraint "event_type::text = ANY (ARRAY['started'::character varying, 'submitted'::character varying]::text[])", name: "form_metric_events_event_type_check"
+  end
+
+  create_table "form_metrics_configuration", force: :cascade do |t|
+    t.datetime "collection_started_at", null: false
   end
 
   create_table "submission_deliveries", force: :cascade do |t|

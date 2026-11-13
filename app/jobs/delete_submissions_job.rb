@@ -11,6 +11,10 @@ class DeleteSubmissionsJob < ApplicationJob
       .where(created_at: ..delete_all_submissions_created_before_time)
 
     submissions_past_max_retention.find_each { |submission| delete_submission_data(submission) }
+
+    # Retain non-identifying daily usage events for the native 14-month
+    # Forms statistics window, independently of 30-day submission deletion.
+    FormMetricEvent.where("occurred_at < ?", 14.months.ago).delete_all
   end
 
   def delete_submission_data(submission)

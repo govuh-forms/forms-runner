@@ -33,7 +33,8 @@ class LogEventService
     EventLogger.log_page_event(log_event, @step.question.question_text, skipped_question?)
     if is_starting_form?
       begin
-        CloudWatchService.record_form_start_metric(form_id: @current_context.form.id) # Logging to CloudWatch
+        CloudWatchService.record_form_start_metric(form_id: @current_context.form.id)
+        FormMetricEvent.record_start(form_id: @current_context.form.id)
       rescue StandardError => e
         Sentry.capture_exception(e)
       end
